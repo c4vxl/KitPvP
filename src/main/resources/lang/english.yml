@@ -1,0 +1,22 @@
+"lobby.item.kit_editor": "<gold><b>Kit Editor</b></gold> <gray>| Right Click</gray>"
+"editor.page.main.title": "<red>Kit Editor</red> <gray>($0)</gray>"
+
+"editor.item.discard.name": "<red>Discard changes</red>"
+"editor.item.discard.lore": "<gray><b>Shift + Right click</b> to discard</gray>"
+"editor.item.save.name": "<green>Save changes</green>"
+"editor.item.offhand.name": "<gold>Offhand</gold>"
+"editor.item.offhand.lore": "<gray>Place the item to appear in your offhand here</gray>"
+
+"editor.item.helmet.name": "<gold>Empty armor slot</gold>"
+"editor.item.helmet.lore": "<gray>Put your <b>helmet</b> in here</gray>"
+"editor.item.chestplate.name": "<gold>Empty armor slot</gold>"
+"editor.item.chestplate.lore": "<gray>Put your <b>chestplate</b> in here</gray>"
+"editor.item.leggings.name": "<gold>Empty armor slot</gold>"
+"editor.item.leggings.lore": "<gray>Put your <b>leggings</b> in here</gray>"
+"editor.item.boots.name": "<gold>Empty armor slot</gold>"
+"editor.item.boots.lore": "<gray>Put your <b>boots</b> in here</gray>"
+
+"editor.section.weapons.name": "<red>Weapons</red>"
+"editor.section.consumables.name": "<red>Consumables</red>"
+"editor.section.blocks.name": "<red>Blocks</red>"
+"editor.section.utils.name": "<red>Utility items</red>"

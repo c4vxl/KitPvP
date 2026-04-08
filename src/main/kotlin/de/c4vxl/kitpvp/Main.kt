@@ -2,8 +2,10 @@ package de.c4vxl.kitpvp
 
 import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.utils.ResourceUtils
+import de.c4vxl.kitpvp.handlers.LobbyHandler
 import dev.jorel.commandapi.CommandAPI
 import dev.jorel.commandapi.CommandAPIPaperConfig
+import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.logging.Logger
 
@@ -38,6 +40,9 @@ class Main : JavaPlugin() {
                     ResourceUtils.readResource("lang/$langName.yml", Main::class.java)
                 )
             }
+
+        if (Bukkit.getPluginManager().isPluginEnabled("GameLobby"))
+            LobbyHandler()
 
         logger.info("[+] $name has been enabled!")
     }
