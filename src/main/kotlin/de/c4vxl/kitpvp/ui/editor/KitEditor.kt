@@ -4,10 +4,10 @@ import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.data.Kit
+import de.c4vxl.kitpvp.handlers.KitEditorHandler
 import de.c4vxl.kitpvp.utils.Item
 import de.c4vxl.kitpvp.utils.Item.addMarginItems
 import de.c4vxl.kitpvp.utils.Item.guiItem
-import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.minecraft.world.item.equipment.ArmorType
@@ -98,12 +98,7 @@ class KitEditor(
                     items.getOrNull(i)
                         ?.guiItem {
                             it.isCancelled = true
-
-                            it.whoClicked.setItemOnCursor(ItemBuilder(
-                                it.currentItem!!.type,
-                                Component.translatable(it.currentItem!!.type.translationKey())
-                            )
-                                .build())
+                            it.whoClicked.setItemOnCursor(KitEditorItems.editableItem(it.currentItem!!.type, language))
                         }
                         ?.build()
                         ?: marginItem
@@ -154,6 +149,9 @@ class KitEditor(
         kit.inventory.forEach { (slot, item) ->
             player.inventory.setItem(slot, item.builder.build())
         }
+
+        // Add inventory
+        KitEditorHandler.openEditors[inv] = this
     }
 
     /**

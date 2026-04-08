@@ -32,7 +32,10 @@ data class KitItem(
          * Constructs a kit item from an item stack
          * @param item The item stack
          */
-        fun fromItem(item: ItemStack): KitItem {
+        fun fromItem(item: ItemStack?): KitItem? {
+            if (item == null)
+                return null
+
             val meta = if (item.hasItemMeta()) item.itemMeta else null
 
             return KitItem(

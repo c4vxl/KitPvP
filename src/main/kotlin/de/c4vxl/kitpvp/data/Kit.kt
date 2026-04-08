@@ -5,7 +5,7 @@ import org.bukkit.Material
 
 data class Kit(
     var name: String,
-    var inventory: Map<Int, KitItem> = emptyMap(),
+    var inventory: MutableMap<Int, KitItem> = mutableMapOf(),
     var helmet: KitItem? = null,
     var chestplate: KitItem? = null,
     var leggings: KitItem? = null,

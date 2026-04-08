@@ -30,3 +30,7 @@
 "editor.section.search.name": "<red>Search</red>"
 
 "editor.item.equip.lore": "<gray>Click to equip</gray>"
+
+"editor.item.inv.lore.1": "<gray><gold>Edit</gold>: Shift + Right click</gray>"
+"editor.item.inv.lore.2": "<gray><gold>Copy</gold>: Right click</gray>"
+"editor.item.inv.lore.3": "<gray><gold>Remove</gold>: Drop</gray>"
