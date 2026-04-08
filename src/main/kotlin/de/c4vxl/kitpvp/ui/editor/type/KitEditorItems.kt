@@ -1,4 +1,4 @@
-package de.c4vxl.kitpvp.ui.editor
+package de.c4vxl.kitpvp.ui.editor.type
 
 import com.google.gson.Gson
 import de.c4vxl.gamemanager.language.Language
