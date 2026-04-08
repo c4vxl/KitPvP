@@ -1,4 +1,4 @@
-package de.c4vxl.kitpvp.ui
+package de.c4vxl.kitpvp.ui.editor
 
 import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
@@ -59,7 +59,15 @@ class KitEditor(
                         setItem(12 + i, item(material, key, "section").guiItem { open(key) }.build())
                     }
 
-                    setItem(17, item(Material.NAME_TAG, "search", "section").guiItem {  }.build())
+                    setItem(17, item(Material.NAME_TAG, "search", "section").guiItem { KitEditorItemSearch(this@KitEditor) { results ->
+                        open(
+                            withItems(
+                                results.take(30).map { material ->
+                                    KitEditorItems.item(material, language)
+                                }
+                            )
+                        )
+                    } }.build())
                 }
 
     /**
@@ -88,7 +96,7 @@ class KitEditor(
         baseInventory.apply {
             val marginItem = Item.marginItem(Material.BLACK_STAINED_GLASS_PANE)
 
-            for (i in 0..17) {
+            for (i in 0..18) {
                 addItem(
                     items.getOrNull(i)
                         ?.build()
@@ -115,16 +123,23 @@ class KitEditor(
     }
 
     /**
-     * Opens the ui at a specific page/section
-     * @param section The section to open
+     * Opens an ui for a player
+     * @param inv The ui to open
      */
-    fun open(section: String = "weapons") {
-        val inv = withItems(KitEditorItems.getItems(player, section))
-
+    private fun open(inv: Inventory) {
         if (player.openInventory.topInventory.size == inv.size && player.openInventory.title() == title) {
             player.openInventory.topInventory.contents = inv.contents
         }
         else
             player.openInventory(inv)
+    }
+
+    /**
+     * Opens the ui at a specific page/section
+     * @param section The section to open
+     */
+    fun open(section: String = "weapons") {
+        val inv = withItems(KitEditorItems.getItems(player, section))
+        open(inv)
     }
 }

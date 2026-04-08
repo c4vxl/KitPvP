@@ -1,5 +1,7 @@
 "lobby.item.kit_editor": "<gold><b>Kit Editor</b></gold> <gray>| Right Click</gray>"
 "editor.page.main.title": "<red>Kit Editor</red> <gray>($0)</gray>"
+"editor.page.search.title": "<blue>Search for item</blue>"
+"editor.page.search.item.confirm": "<green>Search</green>"
 
 "editor.item.discard.name": "<red>Discard changes</red>"
 "editor.item.discard.lore": "<gray><b>Shift + Right click</b> to discard</gray>"
