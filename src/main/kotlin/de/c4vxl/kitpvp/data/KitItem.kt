@@ -4,6 +4,7 @@ import de.c4vxl.gamemanager.utils.ItemBuilder
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.Material
+import org.bukkit.inventory.ItemStack
 
 data class KitItem(
     val material: Material,
@@ -25,4 +26,21 @@ data class KitItem(
             amount = amount,
             unbreakable = unbreakable
         )
+
+    companion object {
+        /**
+         * Constructs a kit item from an item stack
+         * @param item The item stack
+         */
+        fun fromItem(item: ItemStack): KitItem {
+            val meta = if (item.hasItemMeta()) item.itemMeta else null
+
+            return KitItem(
+                item.type,
+                item.amount,
+                meta?.isUnbreakable ?: false,
+                meta?.displayName()?.let { MiniMessage.miniMessage().serialize(it) }
+            )
+        }
+    }
 }
