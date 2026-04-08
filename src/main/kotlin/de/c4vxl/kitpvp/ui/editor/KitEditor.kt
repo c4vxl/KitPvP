@@ -28,11 +28,8 @@ class KitEditor(
         get() =
             Bukkit.createInventory(null, 9 * 6, title)
                 .apply {
-                    for (i in 0..8)
-                        setItem(i, Item.marginItem(Material.BLACK_STAINED_GLASS_PANE))
-                    
                     val marginItem = Item.marginItem(Material.GRAY_STAINED_GLASS_PANE)
-                    listOf(10..17, 46..53, 10..37 step 9, 17..45 step 9)
+                    listOf(0..8, 10..17, 45..53, 9..36 step 9, 17..45 step 9)
                         .forEach {
                             for (i in it)
                                 setItem(i, marginItem)
@@ -43,11 +40,11 @@ class KitEditor(
                     setItem(8, item(Material.GREEN_STAINED_GLASS_PANE, "save").guiItem { save(it) }.build())
 
                     // Armor items
-                    setItem(9, item(Material.ITEM_FRAME, "offhand").guiItem {  }.build())
-                    setItem(18, item(Material.ARMOR_STAND, "helmet").guiItem {  }.build())
-                    setItem(27, item(Material.ARMOR_STAND, "chestplate").guiItem {  }.build())
-                    setItem(36, item(Material.ARMOR_STAND, "leggings").guiItem {  }.build())
-                    setItem(45, item(Material.ARMOR_STAND, "boots").guiItem {  }.build())
+                    setItem(2, item(Material.ARMOR_STAND, "helmet").guiItem {  }.build())
+                    setItem(3, item(Material.ARMOR_STAND, "chestplate").guiItem {  }.build())
+                    setItem(4, item(Material.ARMOR_STAND, "leggings").guiItem {  }.build())
+                    setItem(5, item(Material.ARMOR_STAND, "boots").guiItem {  }.build())
+                    setItem(6, item(Material.ITEM_FRAME, "offhand").guiItem {  }.build())
 
                     // Tab items
                     mapOf(
@@ -56,10 +53,10 @@ class KitEditor(
                         "blocks" to Material.END_STONE,
                         "utils" to Material.DIAMOND
                     ).toList().forEachIndexed { i, (key, material) ->
-                        setItem(12 + i, item(material, key, "section").guiItem { open(key) }.build())
+                        setItem(47 + i, item(material, key, "section").guiItem { open(key) }.build())
                     }
 
-                    setItem(17, item(Material.NAME_TAG, "search", "section").guiItem { KitEditorItemSearch(this@KitEditor) { results ->
+                    setItem(51, item(Material.NAME_TAG, "search", "section").guiItem { KitEditorItemSearch(this@KitEditor) { results ->
                         open(
                             withItems(
                                 results.take(30).map { material ->
@@ -94,9 +91,9 @@ class KitEditor(
      */
     private fun withItems(items: List<ItemBuilder>): Inventory =
         baseInventory.apply {
-            val marginItem = Item.marginItem(Material.BLACK_STAINED_GLASS_PANE)
+            val marginItem = Item.marginItem(Material.GRAY_STAINED_GLASS_PANE)
 
-            for (i in 0..18) {
+            for (i in 0..21) {
                 addItem(
                     items.getOrNull(i)
                         ?.build()
