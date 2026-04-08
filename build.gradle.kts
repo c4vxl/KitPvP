@@ -27,6 +27,7 @@ dependencies {
 
     // GameManagementAPI
     implementation("de.c4vxl:gamemanagementapi:1.0.0")
+    implementation("de.c4vxl:gamelobby:1.0.0")
 }
 
 kotlin {
@@ -53,7 +54,7 @@ bukkit {
     authors = listOf("c4vxl")
     website = "https://gma.c4vxl.de/"
 
-    softDepend = listOf("GameManager")
+    softDepend = listOf("GameManager", "GameLobby")
 
     libraries = listOf(
         "org.jetbrains.kotlin:kotlin-stdlib:2.1.10",
