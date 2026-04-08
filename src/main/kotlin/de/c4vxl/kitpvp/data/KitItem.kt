@@ -7,19 +7,19 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 data class KitItem(
-    val material: Material,
-    val amount: Int = 1,
-    val unbreakable: Boolean = false,
-    val name: String? = null
+    var material: Material,
+    var amount: Int = 1,
+    var unbreakable: Boolean = false,
+    var name: String? = null
 ) {
-    val nameComponent =
+    val nameComponent: Component get() =
         // Load custom name as component
         name?.let { MiniMessage.miniMessage().deserialize(it) }
 
             // Otherwise use default name
             ?: Component.translatable(material.translationKey())
 
-    val builder: ItemBuilder =
+    val builder: ItemBuilder get() =
         ItemBuilder(
             material = material,
             name = nameComponent,

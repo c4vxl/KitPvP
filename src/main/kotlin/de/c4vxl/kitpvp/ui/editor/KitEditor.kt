@@ -4,6 +4,7 @@ import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.data.Kit
+import de.c4vxl.kitpvp.data.KitItem
 import de.c4vxl.kitpvp.handlers.KitEditorHandler
 import de.c4vxl.kitpvp.ui.editor.type.KitEditorItems
 import de.c4vxl.kitpvp.utils.Item
@@ -99,7 +100,10 @@ class KitEditor(
                     items.getOrNull(i)
                         ?.guiItem {
                             it.isCancelled = true
-                            it.whoClicked.setItemOnCursor(KitEditorItems.editableItem(it.currentItem!!.type, language))
+                            it.whoClicked.setItemOnCursor(KitEditorItems.editableItem(
+                                KitItem(it.currentItem!!.type),
+                                this@KitEditor
+                            ))
                         }
                         ?.build()
                         ?: marginItem
@@ -140,19 +144,19 @@ class KitEditor(
      * @param inv The ui to open
      */
     private fun open(inv: Inventory) {
+        player.inventory.clear()
+        kit.inventory.toList().distinct().forEach { (slot, item) ->
+            player.inventory.setItem(slot, KitEditorItems.editableItem(item, this))
+        }
+        
         if (player.openInventory.topInventory.size == inv.size && player.openInventory.title() == title) {
             player.openInventory.topInventory.contents = inv.contents
         }
         else
             player.openInventory(inv)
 
-        player.inventory.clear()
-        kit.inventory.forEach { (slot, item) ->
-            player.inventory.setItem(slot, item.builder.build())
-        }
-
         // Add inventory
-        KitEditorHandler.openEditors[inv] = this
+        updateRegistry()
     }
 
     /**
@@ -163,5 +167,25 @@ class KitEditor(
         currentSection = section ?: currentSection
         val inv = withItems(KitEditorItems.getItems(player, currentSection))
         open(inv)
+    }
+
+    /**
+     * Updates the opened editor ui inventory
+     */
+    fun updateRegistry() {
+        KitEditorHandler.openEditors[player.openInventory.topInventory] = this
+    }
+
+    /**
+     * Saves the inventory to the kit config
+     */
+    fun updateKit() {
+        player.inventory.storageContents.forEachIndexed { i, item ->
+            val kitItem = item?.let { KitItem.fromItem(item) }
+            if (kitItem == null)
+                kit.inventory.remove(i)
+            else
+                kit.inventory[i] = kitItem
+        }
     }
 }

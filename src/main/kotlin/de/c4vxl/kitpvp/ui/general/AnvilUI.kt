@@ -5,6 +5,7 @@ import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.utils.Item
 import de.c4vxl.kitpvp.utils.Item.guiItem
+import de.c4vxl.kitpvp.utils.Item.onDrop
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.MenuType
@@ -40,6 +41,7 @@ open class AnvilUI(
                         val view = it.view as? AnvilView
                         onInput(view?.renameText ?: "")
                     }
+                    .onDrop { it.itemDrop.remove() }
                     .build())
             }
 

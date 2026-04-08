@@ -1,5 +1,6 @@
 package de.c4vxl.kitpvp.ui.editor
 
+import de.c4vxl.kitpvp.handlers.KitEditorHandler
 import de.c4vxl.kitpvp.ui.general.AnvilUI
 import org.bukkit.Material
 
@@ -11,6 +12,8 @@ class KitEditorItemSearch(
     val result: (List<Material>) -> Unit,
 ) {
     init {
+        editor.player.inventory.clear()
+
         AnvilUI(
             editor.player,
             "editor.page.search.title",
@@ -19,6 +22,8 @@ class KitEditorItemSearch(
                 result(query(it))
             }
         )
+
+        editor.updateRegistry()
     }
 
     /**

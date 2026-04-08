@@ -92,7 +92,10 @@ object Item {
         ItemBuilder(
             material,
             Component.empty()
-        ).guiItem().build()
+        )
+            .guiItem()
+            .onDrop { it.itemDrop.remove() }
+            .build()
             .apply {
                 this.itemMeta = this.itemMeta.apply {
                     setMaxStackSize(1)

@@ -100,6 +100,8 @@ class KitEditorArmor(
     }
 
     init {
+        editor.player.inventory.clear()
         editor.player.openInventory(baseInventory)
+        editor.updateRegistry()
     }
 }

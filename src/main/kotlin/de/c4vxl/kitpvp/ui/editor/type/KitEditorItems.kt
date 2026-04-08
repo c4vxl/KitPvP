@@ -5,6 +5,9 @@ import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.Main
+import de.c4vxl.kitpvp.data.KitItem
+import de.c4vxl.kitpvp.ui.editor.KitEditor
+import de.c4vxl.kitpvp.ui.editor.KitEditorEdit
 import de.c4vxl.kitpvp.utils.Item.guiItem
 import de.c4vxl.kitpvp.utils.Item.onDrop
 import net.kyori.adventure.text.Component
@@ -62,18 +65,18 @@ object KitEditorItems {
 
     /**
      * Returns an editable item
-     * @param material The material of the item
-     * @param language The language the item should be translated in to
+     * @param item The item
+     * @param editor The kit editor ui
      */
-    fun editableItem(material: Material, language: Language): ItemStack =
+    fun editableItem(item: KitItem, editor: KitEditor): ItemStack =
         ItemBuilder(
-            material,
-            Component.translatable(material.translationKey()),
+            item.material,
+            item.nameComponent,
             lore = mutableListOf(
                 Component.empty(),
-                language.getCmp("editor.item.inv.lore.1") as TextComponent,
-                language.getCmp("editor.item.inv.lore.2") as TextComponent,
-                language.getCmp("editor.item.inv.lore.3") as TextComponent,
+                editor.language.getCmp("editor.item.inv.lore.1") as TextComponent,
+                editor.language.getCmp("editor.item.inv.lore.2") as TextComponent,
+                editor.language.getCmp("editor.item.inv.lore.3") as TextComponent,
             )
         )
             .guiItem { event ->
@@ -82,6 +85,10 @@ object KitEditorItems {
                 // Clone with right click
                 if (event.isRightClick && !event.isShiftClick)
                     event.whoClicked.setItemOnCursor(event.currentItem?.clone())
+
+                if (event.isRightClick && event.isShiftClick)
+                    KitEditorEdit(editor, item) {
+                    }
 
                 // Enable pickup with left click
                 if (event.isLeftClick) {
