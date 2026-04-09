@@ -11,6 +11,7 @@ import org.bukkit.event.inventory.InventoryAction
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.player.PlayerDropItemEvent
+import org.bukkit.event.player.PlayerQuitEvent
 import java.util.*
 
 /**
@@ -24,6 +25,12 @@ class KitEditorHandler : Listener {
     
     init {
         Bukkit.getPluginManager().registerEvents(this, Main.instance)
+    }
+
+    @EventHandler
+    fun onQuit(event: PlayerQuitEvent) {
+        openEditors.remove(event.player.uniqueId)
+        nonClosable.remove(event.player.uniqueId)
     }
 
     @EventHandler
