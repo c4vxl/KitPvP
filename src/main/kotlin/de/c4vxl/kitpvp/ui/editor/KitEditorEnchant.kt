@@ -1,6 +1,8 @@
 package de.c4vxl.kitpvp.ui.editor
 
+import com.google.gson.Gson
 import de.c4vxl.gamemanager.utils.ItemBuilder
+import de.c4vxl.kitpvp.Main
 import de.c4vxl.kitpvp.data.KitItem
 import de.c4vxl.kitpvp.utils.Item
 import de.c4vxl.kitpvp.utils.Item.addMarginItems
@@ -11,6 +13,7 @@ import net.kyori.adventure.text.TextComponent
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Sound
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.inventory.Inventory
 import kotlin.math.max
@@ -25,6 +28,16 @@ class KitEditorEnchant(
     var item: KitItem
 ) {
     private val title = editor.language.getCmp("editor.page.enchant.title", editor.kit.name)
+
+    /**
+     * Holds a map of enchantments to their icon materials
+     */
+    val enchantmentIcons: Map<Enchantment, Material> get() =
+        Gson().fromJson<Map<String, String>>(Main.instance.dataFolder.resolve("enchantmentIcons.json").readText(), Map::class.java)
+            .mapNotNull { (key, value) ->
+                (Enchantment.values().find { it.key.value().lowercase() == key.lowercase() } ?: return@mapNotNull null) to
+                        (Material.entries.find { it.name.lowercase() == value.lowercase() } ?: return@mapNotNull null)
+            }.toMap()
 
     private val baseInventory: Inventory
         get() =
@@ -54,7 +67,7 @@ class KitEditorEnchant(
                     repeat(21) { i ->
                         possible.getOrNull(i)
                             ?.let { addItem(ItemBuilder(
-                                Material.ENCHANTED_BOOK,
+                                enchantmentIcons.getOrDefault(it, Material.ENCHANTED_BOOK),
                                 Component.translatable(it.translationKey()),
                                 lore = buildList {
                                     add(Component.empty())
