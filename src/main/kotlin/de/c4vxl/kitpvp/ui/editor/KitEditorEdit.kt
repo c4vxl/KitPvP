@@ -20,8 +20,7 @@ import kotlin.math.min
 class KitEditorEdit(
     val editor: KitEditor,
     val slot: Int,
-    var item: KitItem,
-    val handleResult: (KitItem) -> Unit
+    var item: KitItem
 ) {
     private val title = editor.language.getCmp("editor.page.edit.title", editor.kit.name)
 
@@ -80,7 +79,7 @@ class KitEditorEdit(
 
                     // Enchant item
                     setItem(31, ItemBuilder(Material.ENCHANTING_TABLE, editor.language.getCmp("editor.page.edit.item.enchant.name"))
-                        .guiItem {  }
+                        .guiItem { KitEditorEnchant(editor, slot, item) }
                         .build())
 
                     // Unbreakable item
@@ -100,8 +99,6 @@ class KitEditorEdit(
 
     private fun open() {
         editor.kit.inventory[slot] = item
-
-        handleResult(item)
 
         editor.player.openInventory(baseInventory)
         editor.player.inventory.clear()

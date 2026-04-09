@@ -1,0 +1,95 @@
+package de.c4vxl.kitpvp.ui.editor
+
+import de.c4vxl.gamemanager.utils.ItemBuilder
+import de.c4vxl.kitpvp.data.KitItem
+import de.c4vxl.kitpvp.utils.Item
+import de.c4vxl.kitpvp.utils.Item.addMarginItems
+import de.c4vxl.kitpvp.utils.Item.applicableEnchantments
+import de.c4vxl.kitpvp.utils.Item.guiItem
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.TextComponent
+import org.bukkit.Bukkit
+import org.bukkit.Material
+import org.bukkit.Sound
+import org.bukkit.entity.Player
+import org.bukkit.inventory.Inventory
+import kotlin.math.max
+import kotlin.math.min
+
+/**
+ * The Kit editor enchant item gui
+ */
+class KitEditorEnchant(
+    val editor: KitEditor,
+    val slot: Int,
+    var item: KitItem
+) {
+    private val title = editor.language.getCmp("editor.page.enchant.title", editor.kit.name)
+
+    private val baseInventory: Inventory
+        get() =
+            Bukkit.createInventory(null, 9 * 5, title)
+                .apply {
+                    addMarginItems(0..8, 36..44, 0..27 step 9, 8..35 step 9)
+
+                    // Save
+                    setItem(0, ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, editor.language.getCmp("editor.page.edit.save"))
+                        .guiItem { editor.open() }
+                        .build())
+
+                    // Preview item
+                    setItem(8, item.builder.guiItem().build())
+
+                    // Reset item
+                    setItem(40, ItemBuilder(Material.GRINDSTONE, editor.language.getCmp("editor.page.enchant.reset"))
+                        .guiItem { event ->
+                            item.enchantments = mutableMapOf()
+                            (event.whoClicked as Player).playSound(event.whoClicked.location, Sound.BLOCK_GRINDSTONE_USE, 3f, 1f)
+                            open()
+                        }
+                        .build())
+
+                    // Add enchantment books
+                    val possible = item.builder.build().applicableEnchantments
+                    repeat(21) { i ->
+                        possible.getOrNull(i)
+                            ?.let { addItem(ItemBuilder(
+                                Material.ENCHANTED_BOOK,
+                                Component.translatable(it.translationKey()),
+                                lore = buildList {
+                                    add(Component.empty())
+                                    repeat(5) { i -> add(
+                                        editor.language.getCmp("editor.page.enchant.item.lore.${i + 1}",
+                                                                item.enchantments.getOrDefault(it, 0).toString()) as TextComponent) }
+                                }.toMutableList()
+                            )
+                                .guiItem { event ->
+                                    // Calculate change
+                                    val change: Int =
+                                        if (event.isRightClick) -1
+                                        else if (event.isLeftClick) 1
+                                        else 0
+
+                                    // Update amount
+                                    val changed = if (event.isShiftClick) 0 else item.enchantments.getOrDefault(it, 0) + change
+                                    item.enchantments[it] = min(999, max(changed, 0))
+
+                                    (event.whoClicked as Player).playSound(event.whoClicked.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 3f, 1f)
+                                    open()
+                                }
+                                .build()) }
+                            ?: addItem(Item.marginItem(Material.GRAY_STAINED_GLASS_PANE))
+                    }
+                }
+
+    init {
+        open()
+    }
+
+    private fun open() {
+        editor.kit.inventory[slot] = item
+
+        editor.player.openInventory(baseInventory)
+        editor.player.inventory.clear()
+    }
+}

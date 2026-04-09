@@ -26,7 +26,8 @@ data class KitItem(
             material = material,
             name = nameComponent,
             amount = amount,
-            unbreakable = unbreakable
+            unbreakable = unbreakable,
+            enchantments = enchantments
         )
 
     companion object {
@@ -44,7 +45,8 @@ data class KitItem(
                 item.type,
                 item.amount,
                 meta?.isUnbreakable ?: false,
-                meta?.itemName()?.let { MiniMessage.miniMessage().serialize(it) }?.takeIf { it.isNotBlank() }
+                meta?.itemName()?.let { MiniMessage.miniMessage().serialize(it) }?.takeIf { it.isNotBlank() },
+                meta?.enchants?.toMutableMap() ?: mutableMapOf()
             )
         }
     }

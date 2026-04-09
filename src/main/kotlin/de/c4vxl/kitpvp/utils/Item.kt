@@ -116,4 +116,10 @@ object Item {
                     setItem(i, marginItem)
             }
     }
+
+    /**
+     * Returns a list of all applicable enchantments
+     */
+    val ItemStack.applicableEnchantments get() =
+        Enchantment.values().filter { it.canEnchantItem(this) }
 }

@@ -5,7 +5,15 @@
 "editor.page.search.item.confirm": "<green>Search</green>"
 "editor.page.armor.title": "${editor.title} <grey>| Armor</grey>"
 "editor.page.edit.title": "${editor.title} <grey>| Edit</grey>"
+"editor.page.enchant.title": "${editor.title} <grey>| Enchant</grey>"
 "editor.page.edit.save": "<green>Save and go back</green>"
+"editor.page.enchant.reset": "<gold>Reset enchantments</gold>"
+
+"editor.page.enchant.item.lore.1": "<gold>Level:</gold> <gray>$0</gray>"
+"editor.page.enchant.item.lore.2": ""
+"editor.page.enchant.item.lore.3": "<white>Left click:</white> <gray>+1</gray>"
+"editor.page.enchant.item.lore.4": "<white>Right click:</white> <gray>-1</gray>"
+"editor.page.enchant.item.lore.5": "<white>Shift click</white> <gray>to reset</gray>"
 
 "editor.page.edit.item.enchant.name": "<gold>Customize Enchantments</gold>"
 "editor.page.edit.item.unbreakable.name.true": "<gold>Unbreakable:</gold> <green>Yes</green>"
