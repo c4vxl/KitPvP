@@ -73,7 +73,7 @@ class PotionEffectsUI(
                             .guiItem {
                                 val change = if (it.isRightClick) -1 else 1
                                 val current = old.getOrDefault(effect, 0)
-                                val changed = max(0, min(current + change - 1, 999))
+                                val changed = max(0, min(current + change, 999))
                                 if (changed == 0)
                                     old.remove(effect)
                                 else
