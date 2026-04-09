@@ -19,6 +19,7 @@ import java.util.*
 class KitEditorHandler : Listener {
     companion object {
         val openEditors = mutableMapOf<UUID, KitEditor>()
+        val nonClosable = mutableMapOf<UUID, KitEditor>()
     }
     
     init {
@@ -27,6 +28,13 @@ class KitEditorHandler : Listener {
 
     @EventHandler
     fun onInvClose(event: InventoryCloseEvent) {
+        if (nonClosable.contains(event.player.uniqueId) && event.reason == InventoryCloseEvent.Reason.PLAYER) {
+            Bukkit.getScheduler().runTask(Main.instance, Runnable {
+                nonClosable[event.player.uniqueId]!!.open()
+            })
+            return
+        }
+
         if (!openEditors.contains(event.player.uniqueId))
             return
 

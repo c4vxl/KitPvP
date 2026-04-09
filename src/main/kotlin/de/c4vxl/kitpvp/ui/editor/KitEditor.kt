@@ -3,7 +3,6 @@ package de.c4vxl.kitpvp.ui.editor
 import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
-import de.c4vxl.kitpvp.Main
 import de.c4vxl.kitpvp.data.Kit
 import de.c4vxl.kitpvp.data.KitItem
 import de.c4vxl.kitpvp.handlers.KitEditorHandler
@@ -164,6 +163,7 @@ class KitEditor(
         }
 
         // Close editor
+        KitEditorHandler.nonClosable.remove(player.uniqueId)
         player.closeInventory()
 
         player.playSound(player.location, Sound.BLOCK_ANVIL_HIT, 3f, 2f)
@@ -192,6 +192,9 @@ class KitEditor(
             },
             kit.name
         )
+
+        player.inventory.clear()
+        KitEditorHandler.nonClosable.remove(player.uniqueId)
     }
 
     private fun armorItem(slot: Int, inventory: Inventory, type: ArmorType, armorKey: String) {
@@ -265,6 +268,7 @@ class KitEditor(
         currentSection = section ?: currentSection
         val inv = withItems(KitEditorItems.getItems(player, currentSection))
         open(inv)
+        KitEditorHandler.nonClosable[player.uniqueId] = this
     }
 
     /**
