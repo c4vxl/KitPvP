@@ -79,7 +79,6 @@ class KitEditorGameRules(
             rule.icon,
             editor.language.getCmp(rule.getNameKey(value), value.toString()),
             lore = buildList {
-                add(Component.empty())
                 add(editor.language.getCmp("rule.${rule.name.lowercase()}.desc") as TextComponent)
                 add(Component.empty())
                 addAll(rule.getLore(editor.language, value))
