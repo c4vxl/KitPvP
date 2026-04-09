@@ -55,13 +55,14 @@ data class Kit(
             .create()
             .toJson(this)
 
-    /**
-     * Restores a kit from json
-     * @param json The json string
-     */
-    fun fromJson(json: String): Kit =
-        Gson().fromJson(json, Kit::class.java)
-
+    companion object {
+        /**
+         * Restores a kit from json
+         * @param json The json string
+         */
+        fun fromJson(json: String): Kit =
+            Gson().fromJson(json, Kit::class.java)
+    }
     
     override fun toString(): String { return toJson(true) }
 }
