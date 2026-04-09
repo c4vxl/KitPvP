@@ -1,9 +1,11 @@
 package de.c4vxl.kitpvp.handlers
 
+import de.c4vxl.gamelobby.lobby.Lobby.isInLobby
 import de.c4vxl.kitpvp.Main
 import de.c4vxl.kitpvp.data.KitItem
 import de.c4vxl.kitpvp.ui.editor.KitEditor
 import org.bukkit.Bukkit
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -35,6 +37,9 @@ class KitEditorHandler : Listener {
 
     @EventHandler
     fun onInvClose(event: InventoryCloseEvent) {
+        if (!(event.player as? Player ?: return).isInLobby)
+            return
+
         if (nonClosable.contains(event.player.uniqueId) && event.reason == InventoryCloseEvent.Reason.PLAYER) {
             Bukkit.getScheduler().runTask(Main.instance, Runnable {
                 nonClosable[event.player.uniqueId]!!.open()
@@ -54,6 +59,8 @@ class KitEditorHandler : Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onInv(event: InventoryClickEvent) {
+        if (!(event.whoClicked as? Player ?: return).isInLobby) return
+
         val editor = openEditors[event.whoClicked.uniqueId] ?: return
 
         if (event.clickedInventory?.holder == null)
@@ -82,6 +89,8 @@ class KitEditorHandler : Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onDrop(event: PlayerDropItemEvent) {
+        if (event.player.isInLobby)
+            return
         val editor = openEditors[event.player.uniqueId] ?: return
 
         event.isCancelled = false
