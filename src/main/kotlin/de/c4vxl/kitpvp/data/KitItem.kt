@@ -12,7 +12,7 @@ data class KitItem(
     var amount: Int = 1,
     var unbreakable: Boolean = false,
     var name: String? = null,
-    var enchantments: MutableMap<Enchantment, Int> = mutableMapOf()
+    var enchantments: MutableMap<String, Int> = mutableMapOf()
 ) {
     val nameComponent: Component get() =
         // Load custom name as component
@@ -21,13 +21,16 @@ data class KitItem(
             // Otherwise use default name
             ?: Component.translatable(material.translationKey())
 
+    val enchantmentMap get() =
+        enchantments.mapKeys { Enchantment.values().find { e -> e.name == it.key } ?: return@mapKeys Enchantment.UNBREAKING }.toMutableMap()
+
     val builder: ItemBuilder get() =
         ItemBuilder(
             material = material,
             name = nameComponent,
             amount = amount,
             unbreakable = unbreakable,
-            enchantments = enchantments
+            enchantments = enchantmentMap
         )
 
     companion object {
@@ -46,7 +49,7 @@ data class KitItem(
                 item.amount,
                 meta?.isUnbreakable ?: false,
                 meta?.itemName()?.let { MiniMessage.miniMessage().serialize(it) }?.takeIf { it.isNotBlank() },
-                meta?.enchants?.toMutableMap() ?: mutableMapOf()
+                meta?.enchants?.mapKeys { it.key.name }?.toMutableMap() ?: mutableMapOf()
             )
         }
     }

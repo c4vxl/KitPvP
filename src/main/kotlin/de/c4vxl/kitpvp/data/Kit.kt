@@ -1,5 +1,7 @@
 package de.c4vxl.kitpvp.data
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import net.minecraft.world.item.equipment.ArmorType
 
 data class Kit(
@@ -42,4 +44,24 @@ data class Kit(
             else -> null
         }
     }
+
+    /**
+     * Converts this kit to json format
+     * @param pretty Pretty printing
+     */
+    fun toJson(pretty: Boolean = false): String =
+        GsonBuilder()
+            .apply { if (pretty) setPrettyPrinting() }
+            .create()
+            .toJson(this)
+
+    /**
+     * Restores a kit from json
+     * @param json The json string
+     */
+    fun fromJson(json: String): Kit =
+        Gson().fromJson(json, Kit::class.java)
+
+    
+    override fun toString(): String { return toJson(true) }
 }

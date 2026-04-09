@@ -73,7 +73,7 @@ class KitEditorEnchant(
                                     add(Component.empty())
                                     repeat(5) { i -> add(
                                         editor.language.getCmp("editor.page.enchant.item.lore.${i + 1}",
-                                                                item.enchantments.getOrDefault(it, 0).toString()) as TextComponent) }
+                                                                item.enchantmentMap.getOrDefault(it, 0).toString()) as TextComponent) }
                                 }.toMutableList()
                             )
                                 .guiItem { event ->
@@ -84,8 +84,8 @@ class KitEditorEnchant(
                                         else 0
 
                                     // Update amount
-                                    val changed = if (event.isShiftClick) 0 else item.enchantments.getOrDefault(it, 0) + change
-                                    item.enchantments[it] = min(999, max(changed, 0))
+                                    val changed = if (event.isShiftClick) 0 else item.enchantmentMap.getOrDefault(it, 0) + change
+                                    item.enchantments[it.name] = min(999, max(changed, 0))
 
                                     editor.player.playSound(editor.player.location, Sound.BLOCK_ENCHANTMENT_TABLE_USE, 5f, 1f)
                                     open()

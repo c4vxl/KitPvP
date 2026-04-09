@@ -79,7 +79,7 @@ object KitEditorItems {
                 editor.language.getCmp("editor.item.inv.lore.3") as TextComponent,
             ),
             unbreakable = item.unbreakable,
-            enchantments = item.enchantments
+            enchantments = item.enchantmentMap
         )
             .guiItem { event ->
                 event.isCancelled = true
