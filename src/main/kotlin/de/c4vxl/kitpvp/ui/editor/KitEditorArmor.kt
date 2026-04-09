@@ -1,6 +1,7 @@
 package de.c4vxl.kitpvp.ui.editor
 
 import de.c4vxl.gamemanager.utils.ItemBuilder
+import de.c4vxl.kitpvp.data.KitItem
 import de.c4vxl.kitpvp.ui.editor.type.KitEditorItems
 import de.c4vxl.kitpvp.utils.Item
 import de.c4vxl.kitpvp.utils.Item.addMarginItems
@@ -95,7 +96,7 @@ class KitEditorArmor(
 
     private fun select(material: Material?) {
         // Update kit
-        editor.kit.setArmorPiece(armorType, material)
+        editor.kit.setArmorPiece(armorType, material?.let { KitItem(it) })
         editor.open()
     }
 

@@ -24,8 +24,8 @@ import kotlin.math.min
  */
 class KitEditorEnchant(
     val editor: KitEditor,
-    val slot: Int,
-    var item: KitItem
+    var item: KitItem,
+    val onUpdate: (KitItem) -> Unit
 ) {
     private val title = editor.language.getCmp("editor.page.enchant.title", editor.kit.name)
 
@@ -100,7 +100,7 @@ class KitEditorEnchant(
     }
 
     private fun open() {
-        editor.kit.inventory[slot] = item
+        onUpdate(item)
 
         editor.player.openInventory(baseInventory)
         editor.player.inventory.clear()

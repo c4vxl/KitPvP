@@ -48,6 +48,9 @@
 "editor.item.boots.name": "<gold>Boots</gold>"
 "editor.item.boots.lore": "<gray>Click to add <b>boots</b> here</gray>"
 
+"editor.item.armor.lore.1": "<white>Left click:</white> <gray>Change type</gray>"
+"editor.item.armor.lore.2": "<white>Right click:</white> <gray>Edit item</gray>"
+
 "editor.section.weapons.name": "<red>Weapons</red>"
 "editor.section.consumables.name": "<red>Consumables</red>"
 "editor.section.blocks.name": "<red>Blocks</red>"

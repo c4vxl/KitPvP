@@ -10,6 +10,7 @@ import de.c4vxl.kitpvp.ui.editor.type.KitEditorItems
 import de.c4vxl.kitpvp.utils.Item
 import de.c4vxl.kitpvp.utils.Item.addMarginItems
 import de.c4vxl.kitpvp.utils.Item.guiItem
+import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.minecraft.world.item.equipment.ArmorType
@@ -46,7 +47,10 @@ class KitEditor(
                     armorItem(3, this, ArmorType.CHESTPLATE, "chestplate")
                     armorItem(4, this, ArmorType.LEGGINGS, "leggings")
                     armorItem(5, this, ArmorType.BOOTS, "boots")
-                    setItem(6, item(Material.ITEM_FRAME, "offhand").guiItem {  }.build())
+
+                    setItem(6, item(Material.ITEM_FRAME, "offhand").guiItem { event ->
+
+                    }.build())
 
                     // Tab items
                     mapOf(
@@ -131,12 +135,35 @@ class KitEditor(
     private fun armorItem(slot: Int, inventory: Inventory, type: ArmorType, armorKey: String) {
         val item = kit.getArmorItem(type)
 
-        val key = if (item == null) "armor.empty" else armorKey
-        val material = item?.material ?: Material.ARMOR_STAND
+        if (item == null) {
+            inventory.setItem(slot, item(Material.ARMOR_STAND, armorKey).guiItem {
+                KitEditorArmor(this@KitEditor, type)
+            }.build())
+            return
+        }
 
-        inventory.setItem(slot, item(material, key).guiItem {
-            KitEditorArmor(this@KitEditor, type)
-        }.build())
+        val builder = item.builder
+
+        inventory.setItem(slot, ItemBuilder(
+            builder.material,
+            language.getCmp("editor.item.$armorKey.name"),
+            builder.amount,
+            mutableListOf(
+                Component.empty(),
+                language.getCmp("editor.item.armor.lore.1") as TextComponent,
+                language.getCmp("editor.item.armor.lore.2") as TextComponent
+            ),
+            builder.unbreakable, builder.enchantments)
+            .guiItem { event ->
+                if (event.isLeftClick)
+                    KitEditorArmor(this@KitEditor, type)
+
+                if (event.isRightClick)
+                    KitEditorEdit(this@KitEditor, item) {
+                        kit.setArmorPiece(type, it)
+                    }
+            }
+            .build())
     }
 
     /**

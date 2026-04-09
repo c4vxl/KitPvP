@@ -90,7 +90,9 @@ object KitEditorItems {
                     event.whoClicked.setItemOnCursor(event.currentItem?.clone())
 
                 if (event.isRightClick && event.isShiftClick)
-                    KitEditorEdit(editor, event.slot, item)
+                    KitEditorEdit(editor, item) {
+                        editor.kit.inventory[event.slot] = it
+                    }
 
                 // Enable pickup with left click
                 if (event.isLeftClick) {

@@ -1,7 +1,6 @@
 package de.c4vxl.kitpvp.data
 
 import net.minecraft.world.item.equipment.ArmorType
-import org.bukkit.Material
 
 data class Kit(
     var name: String,
@@ -15,11 +14,9 @@ data class Kit(
     /**
      * Sets an armor piece
      * @param type The armor slot
-     * @param material The armor material
+     * @param item The armor item
      */
-    fun setArmorPiece(type: ArmorType, material: Material?): KitItem? {
-        val item = material?.let { KitItem(it) }
-
+    fun setArmorPiece(type: ArmorType, item: KitItem?): KitItem? {
         when (type) {
             ArmorType.HELMET -> this.helmet = item
             ArmorType.CHESTPLATE -> this.chestplate = item
