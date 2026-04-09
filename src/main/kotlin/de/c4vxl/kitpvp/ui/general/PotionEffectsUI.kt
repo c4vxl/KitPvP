@@ -24,8 +24,9 @@ import kotlin.math.min
 class PotionEffectsUI(
     val player: Player,
     titleKey: String,
-    var old: MutableMap<PotionEffectType, Int> = mutableMapOf(),
-    val onChoose: (MutableMap<PotionEffectType, Int>) -> Unit,
+    var old: MutableMap<PotionEffectType, Pair<Int, Int>> = mutableMapOf(),
+    val onChoose: (MutableMap<PotionEffectType, Pair<Int, Int>>) -> Unit,
+    val allowDuration: Boolean = true,
     val language: Language = player.language.child("kitpvp")
 ) {
     private val title = language.getCmp(titleKey)
@@ -65,16 +66,23 @@ class PotionEffectsUI(
                             icon,
                             Component.translatable(effect.translationKey()),
                             lore = buildList {
-                                repeat(4) { i -> add(
-                                    language.getCmp("ui.effect.item.lore.${i + 1}", old.getOrDefault(effect, 0).toString()) as TextComponent
+                                val old = old.getOrDefault(effect, Pair(0, 0))
+                                repeat(if (allowDuration) 7 else 4) { i -> add(
+                                    language.getCmp("ui.effect.item.lore.${i + 1}", old.first.toString(), old.second.toString()) as TextComponent
                                 ) }
                             }.toMutableList()
                         )
-                            .guiItem {
-                                val change = if (it.isRightClick) -1 else 1
-                                val current = old.getOrDefault(effect, 0)
-                                val changed = max(0, min(current + change, 999))
-                                if (changed == 0)
+                            .guiItem { event ->
+                                val change = if (event.isRightClick) -1 else 1
+                                val current = old[effect] ?: Pair(0, 0)
+                                val currentValue = current.let {
+                                    if (event.isShiftClick) it.second
+                                    else it.first
+                                }
+                                val changedValue = max(0, min(currentValue + change, 999))
+                                val changed = if (event.isShiftClick) Pair(current.first, changedValue) else Pair(changedValue, current.second)
+
+                                if (changed.first == 0 && changed.second == 0)
                                     old.remove(effect)
                                 else
                                     old[effect] = changed

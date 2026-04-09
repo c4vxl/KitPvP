@@ -21,7 +21,7 @@ data class KitItem(
     var unbreakable: Boolean = false,
     var name: String? = null,
     var enchantments: MutableMap<String, Int> = mutableMapOf(),
-    var effects: MutableMap<String, Int> = mutableMapOf()
+    var effects: MutableMap<String, Pair<Int, Int>> = mutableMapOf()
 ) {
     val nameComponent: Component get() =
         // Load custom name as component
@@ -42,7 +42,7 @@ data class KitItem(
         (meta as? PotionMeta)?.apply {
             basePotionType = PotionType.WATER
             val amplifier = if (material.name.contains("ARROW")) 8 else 1
-            effectsMap.forEach { addCustomEffect(PotionEffect(it.key, 200 * amplifier, max(0, it.value - 1)), true) }
+            effectsMap.forEach { addCustomEffect(PotionEffect(it.key, it.value.second * 20 * amplifier, max(0, it.value.first - 1)), true) }
         }
 
         return meta

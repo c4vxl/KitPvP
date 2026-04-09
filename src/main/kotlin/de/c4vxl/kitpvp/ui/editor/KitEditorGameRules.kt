@@ -101,11 +101,12 @@ class KitEditorGameRules(
                         PotionEffectsUI(
                             editor.player,
                             "editor.page.rules.title",
-                            editor.kit.rules.activeEffectsMap,
+                            editor.kit.rules.activeEffectsMap.mapValues { Pair(it.value, 0) }.toMutableMap(),
                             { effects ->
-                                editor.kit.rules.activeEffectsMap = effects
+                                editor.kit.rules.activeEffectsMap = effects.mapValues { it.value.first }.toMutableMap()
                                 open()
-                            }
+                            },
+                            false
                         )
                         return@guiItem
                     }
