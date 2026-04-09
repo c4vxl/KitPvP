@@ -24,8 +24,6 @@ class KitEditorItemSearch(
 
         editor.player.inventory.clear()
         editor.player.playSound(editor.player.location, Sound.BLOCK_SCAFFOLDING_BREAK, 5f, 0.5f)
-
-        editor.updateRegistry()
     }
 
     /**
