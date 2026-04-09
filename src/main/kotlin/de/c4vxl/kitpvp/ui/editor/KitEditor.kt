@@ -192,6 +192,8 @@ class KitEditor(
 
                 player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 5f, 1f)
 
+                KitEditorHandler.nonClosable.remove(player.uniqueId)
+
                 onDone(kit)
                 onClose()
             },
@@ -199,7 +201,6 @@ class KitEditor(
         )
 
         player.inventory.clear()
-        KitEditorHandler.nonClosable.remove(player.uniqueId)
     }
 
     private fun armorItem(slot: Int, inventory: Inventory, type: ArmorType, armorKey: String) {
