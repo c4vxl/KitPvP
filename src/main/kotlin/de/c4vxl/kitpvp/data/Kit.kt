@@ -3,6 +3,7 @@ package de.c4vxl.kitpvp.data
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import net.minecraft.world.item.equipment.ArmorType
+import org.bukkit.entity.Player
 
 data class Kit(
     var name: String,
@@ -54,6 +55,23 @@ data class Kit(
             .apply { if (pretty) setPrettyPrinting() }
             .create()
             .toJson(this)
+
+    /**
+     * Equips a player with the kit
+     * @param player The player to equip
+     */
+    fun equip(player: Player) {
+        fun item(item: KitItem?) = item?.builder?.build()
+
+        player.inventory.clear()
+
+        player.inventory.helmet = item(helmet)
+        player.inventory.chestplate = item(chestplate)
+        player.inventory.leggings = item(leggings)
+        player.inventory.boots = item(boots)
+        player.inventory.setItemInOffHand(item(offhand))
+        inventory.forEach { (slot, item) -> player.inventory.setItem(slot, item(item)) }
+    }
 
     companion object {
         /**

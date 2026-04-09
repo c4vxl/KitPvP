@@ -44,10 +44,11 @@ class LobbyHandler : Listener {
                 val kit = json?.let { j -> Kit.fromJson(j) } ?: Kit("Unnamed Kit")
 
                 KitEditor(it.player, kit, onClose = {
-                    Lobby.send(event.player)
+                    // Lobby.send(event.player)
                 }, onDone = { final ->
                     file.createNewFile()
                     file.writeText(final.toJson(true))
+                    final.equip(event.player)
                 })
             }
             .build()
