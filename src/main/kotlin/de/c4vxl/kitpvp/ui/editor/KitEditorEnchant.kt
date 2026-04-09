@@ -87,7 +87,7 @@ class KitEditorEnchant(
                                     val changed = if (event.isShiftClick) 0 else item.enchantments.getOrDefault(it, 0) + change
                                     item.enchantments[it] = min(999, max(changed, 0))
 
-                                    (event.whoClicked as Player).playSound(event.whoClicked.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 3f, 1f)
+                                    editor.player.playSound(editor.player.location, Sound.BLOCK_ENCHANTMENT_TABLE_USE, 5f, 1f)
                                     open()
                                 }
                                 .build()) }
