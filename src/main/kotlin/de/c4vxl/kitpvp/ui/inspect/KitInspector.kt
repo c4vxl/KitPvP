@@ -25,10 +25,8 @@ class KitInspector(
     val language: Language = player.language.child("kitpvp"),
     val onUpdate: (Kit?) -> Unit
 ) : UI {
-    private val title = language.getCmp("inspector.title", kit.metadata.name)
-
     private val baseInventory: Inventory get() =
-        Bukkit.createInventory(null, 9 * 5, title)
+        Bukkit.createInventory(null, 9 * 5, language.getCmp("inspector.title", kit.metadata.name))
             .apply {
                 addMarginItems(0..17, 27..44, 18..18, 26..26)
                 addMarginItems(11..15, 29..33, 10..28 step 9, 16..34 step 9, material = Material.LIME_STAINED_GLASS_PANE)
