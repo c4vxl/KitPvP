@@ -1,26 +1,20 @@
 package de.c4vxl.kitpvp.ui.editor
 
-import com.google.gson.Gson
 import de.c4vxl.gamemanager.utils.ItemBuilder
-import de.c4vxl.kitpvp.Main
-import de.c4vxl.kitpvp.data.KitGameRule
-import de.c4vxl.kitpvp.data.KitGameRules
+import de.c4vxl.kitpvp.data.kit.rule.KitGameRule
+import de.c4vxl.kitpvp.data.kit.rule.KitGameRules
 import de.c4vxl.kitpvp.ui.general.PotionEffectsUI
 import de.c4vxl.kitpvp.utils.Item.addMarginItems
 import de.c4vxl.kitpvp.utils.Item.guiItem
-import de.c4vxl.kitpvp.utils.Item.marginItem
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 import net.minecraft.world.item.alchemy.Potion
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Sound
-import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 import kotlin.math.max
 import kotlin.math.min
 

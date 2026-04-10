@@ -1,4 +1,4 @@
-package de.c4vxl.kitpvp.data
+package de.c4vxl.kitpvp.data.kit.rule
 
 import org.bukkit.potion.PotionEffectType
 

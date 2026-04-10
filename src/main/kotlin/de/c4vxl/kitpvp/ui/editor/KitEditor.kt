@@ -3,12 +3,11 @@ package de.c4vxl.kitpvp.ui.editor
 import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
-import de.c4vxl.kitpvp.data.Kit
-import de.c4vxl.kitpvp.data.KitItem
+import de.c4vxl.kitpvp.data.kit.Kit
+import de.c4vxl.kitpvp.data.kit.item.KitItem
 import de.c4vxl.kitpvp.handlers.KitEditorHandler
 import de.c4vxl.kitpvp.handlers.UIHandler
 import de.c4vxl.kitpvp.ui.editor.type.KitEditorItems
-import de.c4vxl.kitpvp.ui.general.AnvilUI
 import de.c4vxl.kitpvp.ui.type.UI
 import de.c4vxl.kitpvp.utils.Item
 import de.c4vxl.kitpvp.utils.Item.addMarginItems

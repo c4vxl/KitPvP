@@ -4,7 +4,7 @@ import de.c4vxl.gamelobby.Main
 import de.c4vxl.gamemanager.gma.GMA
 import de.c4vxl.gamemanager.gma.player.GMAPlayer.Companion.gma
 import de.c4vxl.gamemanager.language.Language.Companion.language
-import de.c4vxl.kitpvp.data.Kit
+import de.c4vxl.kitpvp.data.kit.Kit
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.entity.Player

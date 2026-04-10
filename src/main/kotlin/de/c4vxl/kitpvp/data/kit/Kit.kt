@@ -1,12 +1,13 @@
-package de.c4vxl.kitpvp.data
+package de.c4vxl.kitpvp.data.kit
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import de.c4vxl.kitpvp.data.kit.item.KitItem
+import de.c4vxl.kitpvp.data.kit.item.KitMetadata
+import de.c4vxl.kitpvp.data.kit.rule.KitGameRules
 import net.minecraft.world.item.equipment.ArmorType
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 data class Kit(
     var metadata: KitMetadata,
@@ -94,10 +95,12 @@ data class Kit(
          * @param creator The creator of the kit
          */
         fun new(name: String, creator: OfflinePlayer) =
-            Kit(KitMetadata(
+            Kit(
+                KitMetadata(
                 name,
                 creator.uniqueId.toString()
-            ))
+            )
+            )
     }
     
     override fun toString(): String { return toJson(true) }

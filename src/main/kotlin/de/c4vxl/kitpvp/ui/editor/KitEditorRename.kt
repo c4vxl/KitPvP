@@ -1,6 +1,6 @@
 package de.c4vxl.kitpvp.ui.editor
 
-import de.c4vxl.kitpvp.data.Kit
+import de.c4vxl.kitpvp.data.kit.Kit
 import de.c4vxl.kitpvp.handlers.UIHandler
 import de.c4vxl.kitpvp.ui.general.AnvilUI
 import de.c4vxl.kitpvp.ui.type.UI

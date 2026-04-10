@@ -1,4 +1,4 @@
-package de.c4vxl.kitpvp.data
+package de.c4vxl.kitpvp.data.kit.item
 
 import de.c4vxl.kitpvp.utils.TimeUtils
 import org.bukkit.Bukkit

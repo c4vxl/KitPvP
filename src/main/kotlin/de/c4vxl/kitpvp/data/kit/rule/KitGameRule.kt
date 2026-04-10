@@ -1,4 +1,4 @@
-package de.c4vxl.kitpvp.data
+package de.c4vxl.kitpvp.data.kit.rule
 
 import de.c4vxl.gamemanager.language.Language
 import net.kyori.adventure.text.TextComponent

@@ -1,14 +1,11 @@
 package de.c4vxl.kitpvp.handlers
 
 import de.c4vxl.gamelobby.events.lobby.LobbyPlayerEquipEvent
-import de.c4vxl.gamelobby.lobby.Lobby
 import de.c4vxl.gamelobby.lobby.Lobby.isInLobby
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.Main
-import de.c4vxl.kitpvp.data.Kit
-import de.c4vxl.kitpvp.data.KitMetadata
-import de.c4vxl.kitpvp.ui.editor.KitEditor
+import de.c4vxl.kitpvp.data.kit.Kit
 import de.c4vxl.kitpvp.ui.inspect.KitInspector
 import de.c4vxl.kitpvp.utils.Item.enchantmentGlow
 import de.c4vxl.kitpvp.utils.Item.onRightClick

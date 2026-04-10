@@ -1,11 +1,10 @@
-package de.c4vxl.kitpvp.data
+package de.c4vxl.kitpvp.data.kit.item
 
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
-import org.bukkit.entity.Arrow
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 import org.bukkit.inventory.meta.PotionMeta
@@ -13,7 +12,6 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.potion.PotionType
 import kotlin.math.max
-import kotlin.math.min
 
 data class KitItem(
     var material: Material,

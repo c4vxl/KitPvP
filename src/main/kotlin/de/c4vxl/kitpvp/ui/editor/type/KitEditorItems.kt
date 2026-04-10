@@ -5,7 +5,7 @@ import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.Main
-import de.c4vxl.kitpvp.data.KitItem
+import de.c4vxl.kitpvp.data.kit.item.KitItem
 import de.c4vxl.kitpvp.ui.editor.KitEditor
 import de.c4vxl.kitpvp.ui.editor.KitEditorEdit
 import de.c4vxl.kitpvp.utils.Item.guiItem
