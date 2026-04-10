@@ -50,7 +50,10 @@ object Database {
      */
     private fun getPlayerEntry(uuid: String) =
         dir.resolve("player/$uuid.json")
-            .also { it.parentFile.mkdirs() }
+            .also {
+                it.parentFile.mkdirs()
+                it.createNewFile()
+            }
 
     /**
      * Returns the stored data of a player
