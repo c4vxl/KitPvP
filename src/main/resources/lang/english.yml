@@ -141,8 +141,8 @@
 "ui.kits.item.kit.lore.1": "<gray>Created at:</gray> <white>$0</white>"
 "ui.kits.item.kit.lore.2": "<gray>Last edited:</gray> <white>$1</white>"
 "ui.kits.item.kit.lore.3": ""
-"ui.kits.item.kit.lore.5": "<gray><white>Right click</white> to edit</gray>"
 "ui.kits.item.kit.lore.4": "<gray><white>Left click</white> to select</gray>"
+"ui.kits.item.kit.lore.5": "<gray><white>Right click</white> to edit</gray>"
 "ui.kits.item.your_kits.name": "<gold>Your kits ↓</gold>"
 "ui.kits.item.general_kits.name": "<gold>Global kits ↓</gold>"
 

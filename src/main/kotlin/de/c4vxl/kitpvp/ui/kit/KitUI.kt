@@ -58,7 +58,11 @@ class KitUI(
     private fun serverKitItem(kit: ServerKit, idx: Int) =
         ItemBuilder(
             kit.iconMaterial,
-            language.getCmp("ui.kits.item.kit.name", kit.kit.metadata.name)
+            language.getCmp("ui.kits.item.kit.name", kit.kit.metadata.name),
+            lore = mutableListOf(
+                language.getCmp("ui.kits.item.kit.lore.4") as TextComponent,
+                language.getCmp("ui.kits.item.kit.lore.5") as TextComponent
+            )
         )
             .guiItem {
 
