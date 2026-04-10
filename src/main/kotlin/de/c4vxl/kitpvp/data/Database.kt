@@ -65,6 +65,16 @@ object Database {
         }.data
 
     /**
+     * Update a db entry
+     * @param player The player entry to update
+     * @param block The update
+     */
+    inline fun update(player: OfflinePlayer, block: StoredData.() -> Unit) {
+        block(get(player))
+        makeDirty(player.uniqueId)
+    }
+
+    /**
      * Loads data from disk
      * @param player The player to load the data of
      */
