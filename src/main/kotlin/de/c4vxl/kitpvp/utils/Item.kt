@@ -1,9 +1,11 @@
 package de.c4vxl.kitpvp.utils
 
 import de.c4vxl.gamemanager.utils.ItemBuilder
+import de.c4vxl.kitpvp.handlers.UIHandler.Companion.immovable
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.Material
+import org.bukkit.NamespacedKey
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.EntityType
 import org.bukkit.event.block.Action
@@ -13,6 +15,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import org.bukkit.persistence.PersistentDataType
 
 /**
  * Adds useful item utilities
@@ -103,6 +106,7 @@ object Item {
                     addItemFlags(ItemFlag.HIDE_ATTRIBUTES)
                 }
             }
+            .immovable()
 
     /**
      * Adds margin items in specific slots

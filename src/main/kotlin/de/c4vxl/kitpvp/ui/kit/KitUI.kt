@@ -79,7 +79,13 @@ class KitUI(
                 if (it.isRightClick) {
                     if (!allowEdits) return@guiItem
 
-                    // TODO: Open editor here
+                    KitLayout(
+                        player,
+                        kit.kit,
+                        {
+                            // TODO: Save kit preference
+                        }, this
+                    )
                 }
             }
             .build()
@@ -118,7 +124,7 @@ class KitUI(
                         open()
                     }, returnTo = this@KitUI)
                 } else if (it.isLeftClick && !kit.isEmpty) {
-                    println("Choose kit: " + kit.metadata.name)
+                    onChoose(kit)
                 }
             }
             .build()

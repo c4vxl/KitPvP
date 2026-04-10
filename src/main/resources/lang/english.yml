@@ -150,3 +150,16 @@
 "ui.kits.item.notice.no_kits.2": "<gray>Once you create one, it will show up here.</gray>"
 
 "kit.name.untitled": "Untitled Kit"
+
+"ui.layout.title": "<red>Customize kit layout</red>"
+"ui.layout.save": "<green>Save and exit layout editor</green>"
+"ui.layout.item.hotbar_sep": "<gold>Hotbar ↓</gold>"
+"ui.layout.item.inventory_sep": "<gold>Inventory ↓</gold>"
+
+"ui.layout.item.helmet": "<gold>Helmet</gold>"
+"ui.layout.item.chestplate": "<gold>Chestplate</gold>"
+"ui.layout.item.leggings": "<gold>Leggings</gold>"
+"ui.layout.item.boots": "<gold>Boots</gold>"
+"ui.layout.item.offhand": "<gold>Offhand</gold>"
+
+"ui.layout.notice.immovable": "<gray>This item cannot be moved</gray>"

@@ -42,7 +42,7 @@ class LobbyHandler : Listener {
 
                 KitUI(event.player, {
 
-                }, false)
+                }, true)
             }
             .build()
             .enchantmentGlow()
