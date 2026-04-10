@@ -3,6 +3,7 @@ package de.c4vxl.kitpvp.ui.general
 import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
+import de.c4vxl.kitpvp.handlers.UIHandler
 import de.c4vxl.kitpvp.ui.type.UI
 import de.c4vxl.kitpvp.utils.Item
 import de.c4vxl.kitpvp.utils.Item.guiItem
@@ -22,6 +23,7 @@ open class AnvilUI(
     private val confirmTranslationKey: String,
     val onInput: (String) -> Unit,
     val placeholder: String? = null,
+    val returnTo: UI? = null,
     private val language: Language = player.language.child("kitpvp")
 ) : UI {
     val baseView: AnvilView
@@ -53,5 +55,6 @@ open class AnvilUI(
 
     override fun open() {
         baseView.open()
+        UIHandler.nonClosable[player.uniqueId] = returnTo ?: this
     }
 }

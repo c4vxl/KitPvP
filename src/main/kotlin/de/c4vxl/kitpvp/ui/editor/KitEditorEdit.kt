@@ -3,8 +3,10 @@ package de.c4vxl.kitpvp.ui.editor
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.data.item.ItemType
 import de.c4vxl.kitpvp.data.kit.item.KitItem
+import de.c4vxl.kitpvp.handlers.UIHandler
 import de.c4vxl.kitpvp.ui.general.AnvilUI
 import de.c4vxl.kitpvp.ui.general.PotionEffectsUI
+import de.c4vxl.kitpvp.ui.type.UI
 import de.c4vxl.kitpvp.utils.Item.addMarginItems
 import de.c4vxl.kitpvp.utils.Item.guiItem
 import net.kyori.adventure.text.TextComponent
@@ -23,7 +25,7 @@ class KitEditorEdit(
     val editor: KitEditor,
     var item: KitItem,
     val onUpdate: (KitItem) -> Unit
-) {
+) : UI {
     private val title = editor.language.getCmp("editor.page.edit.title", editor.kit.metadata.name)
 
     private val baseInventory: Inventory
@@ -49,7 +51,7 @@ class KitEditorEdit(
                                 { name ->
                                     item.name = name
                                     open()
-                                })
+                                }, returnTo = this@KitEditorEdit)
                         }
                         .build())
 
@@ -130,11 +132,13 @@ class KitEditorEdit(
         open()
     }
 
-    private fun open() {
+    override fun open() {
         onUpdate(item)
 
         editor.player.playSound(editor.player.location, Sound.BLOCK_SCAFFOLDING_BREAK, 5f, 0.5f)
         editor.player.openInventory(baseInventory)
         editor.player.inventory.clear()
+
+        UIHandler.nonClosable[editor.player.uniqueId] = editor
     }
 }
