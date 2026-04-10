@@ -3,7 +3,9 @@ package de.c4vxl.kitpvp.ui.editor
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.data.kit.rule.KitGameRule
 import de.c4vxl.kitpvp.data.kit.rule.KitGameRules
+import de.c4vxl.kitpvp.handlers.UIHandler
 import de.c4vxl.kitpvp.ui.general.PotionEffectsUI
+import de.c4vxl.kitpvp.ui.type.UI
 import de.c4vxl.kitpvp.utils.Item.addMarginItems
 import de.c4vxl.kitpvp.utils.Item.guiItem
 import net.kyori.adventure.text.Component
@@ -23,9 +25,9 @@ import kotlin.math.min
  */
 class KitEditorGameRules(
     val editor: KitEditor
-) {
+) : UI {
     private val title = editor.language.getCmp("editor.page.rules.title", editor.kit.metadata.name)
-    private var currentPage = 0
+    private var returnToEditor = true
 
     private val baseInventory: Inventory
         get() =
@@ -36,7 +38,7 @@ class KitEditorGameRules(
                     // Save
                     setItem(8, ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, editor.language.getCmp("editor.page.rules.save"))
                         .guiItem {
-                            if (currentPage == 0)
+                            if (returnToEditor)
                                 editor.open()
                             else
                                 open()
@@ -92,6 +94,7 @@ class KitEditorGameRules(
                     }
 
                     Potion::class.java -> {
+                        returnToEditor = false
                         PotionEffectsUI(
                             editor.player,
                             "editor.page.rules.title",
@@ -102,6 +105,7 @@ class KitEditorGameRules(
                             },
                             false
                         )
+                        UIHandler.nonClosable[editor.player.uniqueId] = this@KitEditorGameRules
                         return@guiItem
                     }
                 }
@@ -149,10 +153,12 @@ class KitEditorGameRules(
             addItem(createGameRuleItem(KitGameRule.ACTIVE_EFFECTS, editor.kit.rules.activeEffects) {})
         }
 
-    private fun open(page: Int = 0) {
-        currentPage = page
+    override fun open() {
+        returnToEditor = true
         editor.player.playSound(editor.player.location, Sound.BLOCK_SCAFFOLDING_BREAK, 5f, 0.5f)
         editor.player.openInventory(withItems())
         editor.player.inventory.clear()
+
+        UIHandler.nonClosable[editor.player.uniqueId] = editor
     }
 }

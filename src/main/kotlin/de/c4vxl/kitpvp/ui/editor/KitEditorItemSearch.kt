@@ -19,7 +19,8 @@ class KitEditorItemSearch(
             "editor.page.search.item.confirm",
             {
                 result(query(it))
-            }
+            },
+            returnTo = editor
         )
         
         editor.player.playSound(editor.player.location, Sound.BLOCK_SCAFFOLDING_BREAK, 5f, 0.5f)

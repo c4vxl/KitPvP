@@ -2,6 +2,7 @@ package de.c4vxl.kitpvp.ui.editor
 
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.data.kit.item.KitItem
+import de.c4vxl.kitpvp.handlers.UIHandler
 import de.c4vxl.kitpvp.ui.editor.type.KitEditorItems
 import de.c4vxl.kitpvp.utils.Item
 import de.c4vxl.kitpvp.utils.Item.addMarginItems
@@ -105,5 +106,6 @@ class KitEditorArmor(
         editor.player.playSound(editor.player.location, Sound.BLOCK_SCAFFOLDING_BREAK, 5f, 0.5f)
         editor.player.openInventory(baseInventory)
         editor.player.inventory.clear()
+        UIHandler.nonClosable[editor.player.uniqueId] = editor
     }
 }
