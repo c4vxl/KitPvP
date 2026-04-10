@@ -16,6 +16,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryCloseEvent
+import org.bukkit.event.inventory.InventoryType
 
 /**
  * Intercepts the GameLobby plugin and adds KitPvP-specific logic
@@ -55,6 +56,12 @@ class LobbyHandler : Listener {
 
         // Only if inventory is actually being closed
         if (event.reason == InventoryCloseEvent.Reason.OPEN_NEW)
+            return
+
+        // Not on player inventories
+        // InventoryType.CRAFTING because the player inv sometimes counts as "CRAFTING"
+        // This isn't a problem as of right now, because no UI uses a crafting inv
+        if (listOf(InventoryType.PLAYER, InventoryType.CRAFTING).contains(event.inventory.type))
             return
 
         // Return if non-closable
