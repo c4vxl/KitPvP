@@ -8,5 +8,5 @@ object TimeUtils {
      * Returns the current time as a string
      */
     val now: String get() =
-        LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss (yyyy-MM-dd)"))
+        LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss (yyyy/MM/dd)"))
 }
