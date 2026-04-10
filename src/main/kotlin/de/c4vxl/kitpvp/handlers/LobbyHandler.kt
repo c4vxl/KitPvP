@@ -7,6 +7,7 @@ import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.Main
 import de.c4vxl.kitpvp.data.struct.kit.Kit
 import de.c4vxl.kitpvp.ui.inspect.KitInspector
+import de.c4vxl.kitpvp.ui.kit.KitUI
 import de.c4vxl.kitpvp.utils.Item.enchantmentGlow
 import de.c4vxl.kitpvp.utils.Item.onRightClick
 import org.bukkit.Bukkit
@@ -38,15 +39,8 @@ class LobbyHandler : Listener {
                 if (!event.player.isInLobby)
                     return@onRightClick
 
-                val file = File("kit.json")
-                val json = file.takeIf { f -> f.exists() }?.readText()
-                val kit = Kit.fromJson(json) ?: Kit.new("Unnamed Kit", event.player)
+                KitUI(event.player, {
 
-                KitInspector(event.player, kit, onUpdate = { final ->
-                    file.createNewFile()
-                    file.writeText(final?.toJson(true) ?: "")
-                    final?.equip(event.player)
-                    event.player.closeInventory()
                 })
             }
             .build()

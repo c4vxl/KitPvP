@@ -137,5 +137,16 @@
 "inspector.item.about.lore.2": "<gray>Created at:</gray> <white>$0</white>"
 "inspector.item.about.lore.3": "<gray>Last edited:</gray> <white>$2</white>"
 
-
 "tryon.title.exit_notice": "<gold><b>Jump to exit kit preview</b></gold>"
+
+"ui.kits.title": "<red>Kits</red>"
+"ui.kits.item.kit.name": "<gold>$0</gold>"
+"ui.kits.item.kit.lore.1": "<gray>Created at:</gray> <white>$0</white>"
+"ui.kits.item.kit.lore.2": "<gray>Last edited:</gray> <white>$1</white>"
+"ui.kits.item.kit.lore.3": ""
+"ui.kits.item.kit.lore.5": "<gray><white>Right click</white> to edit</gray>"
+"ui.kits.item.kit.lore.4": "<gray><white>Left click</white> to select</gray>"
+"ui.kits.item.your_kits.name": "<gold>Your kits ↓</gold>"
+"ui.kits.item.general_kits.name": "<gold>Global kits ↓</gold>"
+
+"kit.name.untitled": "Untitled Kit #$0"

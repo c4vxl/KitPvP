@@ -109,8 +109,8 @@ object Item {
      * @param ranges The ranges where to put margin items
      * @param material The material of the margin item
      */
-    fun Inventory.addMarginItems(vararg ranges: IntProgression, material: Material = Material.GRAY_STAINED_GLASS_PANE) {
-        val marginItem = marginItem(material)
+    fun Inventory.addMarginItems(vararg ranges: IntProgression, material: Material = Material.GRAY_STAINED_GLASS_PANE, name: String? = null) {
+        val marginItem = marginItem(material, name)
         ranges
             .forEach {
                 for (i in it)

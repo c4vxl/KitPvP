@@ -4,6 +4,7 @@ import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.data.struct.kit.Kit
+import de.c4vxl.kitpvp.handlers.UIHandler
 import de.c4vxl.kitpvp.ui.editor.KitEditor
 import de.c4vxl.kitpvp.ui.editor.KitEditorRename
 import de.c4vxl.kitpvp.ui.type.UI
@@ -23,7 +24,8 @@ class KitInspector(
     val player: Player,
     var kit: Kit,
     val language: Language = player.language.child("kitpvp"),
-    val onUpdate: (Kit?) -> Unit
+    val onUpdate: (Kit?) -> Unit,
+    val returnTo: UI? = null
 ) : UI {
     private val baseInventory: Inventory get() =
         Bukkit.createInventory(null, 9 * 5, language.getCmp("inspector.title", kit.metadata.name))
@@ -103,5 +105,6 @@ class KitInspector(
         player.playSound(player.location, Sound.BLOCK_SCAFFOLDING_BREAK, 5f, 0.5f)
         player.openInventory(baseInventory)
         player.inventory.clear()
+        returnTo?.let { UIHandler.nonClosable[player.uniqueId] = it }
     }
 }

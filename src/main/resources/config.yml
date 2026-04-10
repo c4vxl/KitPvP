@@ -10,3 +10,6 @@ config:
 
     # The interval (in seconds) to save the db cache to disk
     save-cache: 7200
+
+  kits:
+    num-kits: 6

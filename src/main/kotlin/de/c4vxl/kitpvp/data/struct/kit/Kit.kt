@@ -20,6 +20,12 @@ data class Kit(
     var rules: KitGameRules = KitGameRules()
 ) {
     /**
+     * Returns {@code true} if the kit doesn't contain items
+     */
+    val isEmpty get() =
+        inventory.isEmpty() && helmet == null && chestplate == null && leggings == null && boots == null && offhand == null
+
+    /**
      * Sets an armor piece
      * @param type The armor slot
      * @param item The armor item
@@ -95,12 +101,10 @@ data class Kit(
          * @param creator The creator of the kit
          */
         fun new(name: String, creator: OfflinePlayer) =
-            Kit(
-                KitMetadata(
+            Kit(KitMetadata(
                 name,
                 creator.uniqueId.toString()
-            )
-            )
+            ))
     }
     
     override fun toString(): String { return toJson(true) }
