@@ -39,5 +39,7 @@ class UIHandler : Listener {
             })
             return
         }
+
+        nonClosable.remove(event.player.uniqueId)
     }
 }
