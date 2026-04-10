@@ -5,7 +5,7 @@ import de.c4vxl.gamelobby.lobby.Lobby.isInLobby
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.Main
-import de.c4vxl.kitpvp.data.kit.Kit
+import de.c4vxl.kitpvp.data.struct.kit.Kit
 import de.c4vxl.kitpvp.ui.inspect.KitInspector
 import de.c4vxl.kitpvp.utils.Item.enchantmentGlow
 import de.c4vxl.kitpvp.utils.Item.onRightClick

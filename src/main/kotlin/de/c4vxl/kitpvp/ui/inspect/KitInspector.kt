@@ -3,7 +3,7 @@ package de.c4vxl.kitpvp.ui.inspect
 import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
-import de.c4vxl.kitpvp.data.kit.Kit
+import de.c4vxl.kitpvp.data.struct.kit.Kit
 import de.c4vxl.kitpvp.ui.editor.KitEditor
 import de.c4vxl.kitpvp.ui.editor.KitEditorRename
 import de.c4vxl.kitpvp.ui.type.UI

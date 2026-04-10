@@ -1,8 +1,8 @@
 package de.c4vxl.kitpvp.ui.editor
 
 import de.c4vxl.gamemanager.utils.ItemBuilder
-import de.c4vxl.kitpvp.data.kit.rule.KitGameRule
-import de.c4vxl.kitpvp.data.kit.rule.KitGameRules
+import de.c4vxl.kitpvp.data.struct.kit.rule.KitGameRule
+import de.c4vxl.kitpvp.data.struct.kit.rule.KitGameRules
 import de.c4vxl.kitpvp.handlers.UIHandler
 import de.c4vxl.kitpvp.ui.general.PotionEffectsUI
 import de.c4vxl.kitpvp.ui.type.UI

@@ -2,6 +2,7 @@ package de.c4vxl.kitpvp
 
 import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.utils.ResourceUtils
+import de.c4vxl.kitpvp.data.Database
 import de.c4vxl.kitpvp.handlers.KitEditorHandler
 import de.c4vxl.kitpvp.handlers.LobbyHandler
 import de.c4vxl.kitpvp.handlers.TryOnHandler
@@ -45,6 +46,7 @@ class Main : JavaPlugin() {
             }
 
         // Save configs
+        saveResource("config.yml", false)
         saveResource("kiteditor.json", false)
         saveResource("enchantmentIcons.json", false)
         saveResource("potionEffects.json", false)
@@ -62,6 +64,9 @@ class Main : JavaPlugin() {
     override fun onDisable() {
         // Disable CommandAPI
         CommandAPI.onDisable()
+
+        // Save db
+        Database.saveAll()
 
         logger.info("[+] $name has been disabled!")
     }

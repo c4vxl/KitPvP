@@ -1,4 +1,4 @@
-package de.c4vxl.kitpvp.data.item
+package de.c4vxl.kitpvp.data.struct.item
 
 import org.bukkit.Material
 

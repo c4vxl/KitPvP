@@ -2,7 +2,7 @@ package de.c4vxl.kitpvp.handlers
 
 import de.c4vxl.gamelobby.lobby.Lobby.isInLobby
 import de.c4vxl.kitpvp.Main
-import de.c4vxl.kitpvp.data.kit.item.KitItem
+import de.c4vxl.kitpvp.data.struct.kit.item.KitItem
 import de.c4vxl.kitpvp.ui.editor.KitEditor
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player

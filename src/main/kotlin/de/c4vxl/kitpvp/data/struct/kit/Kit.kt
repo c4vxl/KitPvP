@@ -1,16 +1,13 @@
-package de.c4vxl.kitpvp.data.kit
+package de.c4vxl.kitpvp.data.struct.kit
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import de.c4vxl.kitpvp.data.kit.item.KitItem
-import de.c4vxl.kitpvp.data.kit.item.KitMetadata
-import de.c4vxl.kitpvp.data.kit.rule.KitGameRules
+import de.c4vxl.kitpvp.data.struct.kit.item.KitItem
+import de.c4vxl.kitpvp.data.struct.kit.item.KitMetadata
+import de.c4vxl.kitpvp.data.struct.kit.rule.KitGameRules
 import net.minecraft.world.item.equipment.ArmorType
-import org.bukkit.Material
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 
 data class Kit(
     var metadata: KitMetadata,

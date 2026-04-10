@@ -1,4 +1,4 @@
-package de.c4vxl.kitpvp.data.kit.item
+package de.c4vxl.kitpvp.data.struct.kit.item
 
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import net.kyori.adventure.text.Component
