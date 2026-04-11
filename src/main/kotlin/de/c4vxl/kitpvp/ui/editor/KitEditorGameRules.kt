@@ -130,6 +130,8 @@ class KitEditorGameRules(
 
             addItem(createGameRuleItem(KitGameRule.ALLOW_BLOCK_BREAKING, editor.kit.rules.isAllowBlockBreaking) { editor.kit.rules.isAllowBlockBreaking = it })
 
+            addItem(createGameRuleItem(KitGameRule.ALLOW_BLOCK_PLACING, editor.kit.rules.isAllowBlockPlacing) { editor.kit.rules.isAllowBlockPlacing = it })
+
             addItem(createGameRuleItem(KitGameRule.ITEM_DROP, editor.kit.rules.isItemDrop) { editor.kit.rules.isItemDrop = it })
 
             addItem(createGameRuleItem(KitGameRule.EXPLOSION_DAMAGE, editor.kit.rules.isExplosionDamage) { editor.kit.rules.isExplosionDamage = it })
