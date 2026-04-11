@@ -4,10 +4,12 @@ import de.c4vxl.gamemanager.gma.event.game.GameEndEvent
 import de.c4vxl.gamemanager.gma.event.game.GameStartEvent
 import de.c4vxl.gamemanager.gma.event.game.GameStopEvent
 import de.c4vxl.gamemanager.gma.event.game.GameWorldLoadedEvent
-import de.c4vxl.gamemanager.gma.event.player.*
+import de.c4vxl.gamemanager.gma.event.player.GamePlayerEquipEvent
+import de.c4vxl.gamemanager.gma.event.player.GamePlayerLoseEvent
+import de.c4vxl.gamemanager.gma.event.player.GamePlayerRespawnEvent
+import de.c4vxl.gamemanager.gma.event.player.GamePlayerWinEvent
 import de.c4vxl.gamemanager.gma.game.Game
 import de.c4vxl.gamemanager.gma.player.GMAPlayer.Companion.gma
-import de.c4vxl.gamemanager.gma.team.Team
 import de.c4vxl.kitpvp.Main
 import de.c4vxl.kitpvp.data.extensions.Extensions.data
 import de.c4vxl.kitpvp.data.extensions.Extensions.kitData
@@ -15,6 +17,7 @@ import org.bukkit.Bukkit
 import org.bukkit.GameMode
 import org.bukkit.GameRules
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 
 class GameHandler : Listener {
@@ -128,7 +131,7 @@ class GameHandler : Listener {
             return
 
         // No more rounds remaining
-        // Stop the game
+        // End the game
 
         // Evaluate winning teams
         val roundsWon = game.kitData.roundsWon
@@ -137,7 +140,7 @@ class GameHandler : Listener {
 
         val highestNumWins = roundsWon.maxOfOrNull { it.second } ?: 0
         val winnerTeams = roundsWon.filter { it.second == highestNumWins }.map { it.first }.toSet()
-        val otherTeams = roundsWon.filterNot { it.first in winnerTeams }.map { it.first }
+        val otherTeams = event.game.teamManager.teams.values.filterNot { it in winnerTeams }
 
         if (roundsWon.isNotEmpty()) {
             // Call win/loose events
@@ -154,5 +157,29 @@ class GameHandler : Listener {
 
         // Stop game
         game.stop()
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    fun onEnd(event: GameEndEvent) {
+        val players = buildMap {
+            event.winnerTeams.forEach { team -> team.players.forEach { put(it, true) } }
+            event.teamsLost.forEach { team -> team.players.forEach { put(it, false) } }
+        }
+        
+        val numRounds = event.game.kitData.kit?.rules?.numRounds
+
+        players.forEach { (player, hasWon) ->
+            val numWon = event.game.kitData.roundsWon.getOrDefault(player.team?.id, 0)
+            val language = player.language.child("kitpvp")
+
+            player.bukkitPlayer.sendMessage(
+                language.getCmp("msg.end.1")
+                    .appendNewline()
+                    .append(language.getCmp("msg.end.2", numWon.toString(), numRounds.toString()))
+                    .appendNewline()
+                    .append(language.getCmp("msg.end.3.${if (hasWon) "won" else "lost"}"))
+            )
+            player.bukkitPlayer.clearTitle()
+        }
     }
 }

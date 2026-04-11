@@ -1,3 +1,6 @@
+"prefix": "<gray>[</gray><red>KitPvP</red><gray>]</gray>"
+
+
 "lobby.item.kit_editor": "<gold><b>Kit Editor</b></gold> <gray>| Right Click</gray>"
 "editor.title": "<red>Kit Editor</red>"
 "editor.page.main.title": "${editor.title} <gray>($0)</gray>"
@@ -180,3 +183,9 @@
 
 
 "queue.item.layout_editor": "<gold>Edit kit layout</gold>"
+
+
+"msg.end.1": "${prefix} <gold><b>Match results:</b></gold>"
+"msg.end.2": "${prefix} <gray>Your team has won <b>$0/$1</b> rounds.</gray>"
+"msg.end.3.won": "${prefix} <gray>You have <green>won</green> the game!</gray>"
+"msg.end.3.lost": "${prefix} <gray>You have <red>lost</red> the game!</gray>"
