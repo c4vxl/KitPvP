@@ -111,4 +111,16 @@ data class Kit(
     }
     
     override fun toString(): String { return toJson(true) }
+
+    override fun equals(other: Any?): Boolean {
+        val otherKit = other as? Kit ?: return false
+
+        // Equal metadata
+        return (otherKit.metadata.name == this.metadata.name
+                && otherKit.metadata.createdBy == this.metadata.createdBy
+                && otherKit.metadata.createdAt == this.metadata.createdAt)
+    }
+
+    override fun hashCode(): Int =
+        javaClass.hashCode()
 }
