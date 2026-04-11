@@ -72,8 +72,10 @@ class GameHandler : Listener {
                     .appendNewline().append(lang.getCmp("msg.start.2", kit.metadata.name))
 
                     .let {
-                        if (kit.metadata.createdBy.isNotBlank())
-                            it.appendNewline().append(lang.getCmp("msg.start.3", kit.metadata.createdBy))
+                        val creator = try { kit.metadata.creatorPlayer.name ?: "" } catch (_: Exception) { "" }
+
+                        if (creator.isNotBlank())
+                            it.appendNewline().append(lang.getCmp("msg.start.3", creator))
                         else
                             it
                     }
