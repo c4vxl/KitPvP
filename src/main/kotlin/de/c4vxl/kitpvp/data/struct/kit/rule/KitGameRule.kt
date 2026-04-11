@@ -14,6 +14,7 @@ enum class KitGameRule(
     FALL_DAMAGE(Material.DIAMOND_BOOTS, Boolean::class.java),
     ITEM_DROP(Material.STRING, Boolean::class.java),
     ALLOW_BLOCK_BREAKING(Material.IRON_PICKAXE, Boolean::class.java),
+    EXPLOSION_DAMAGE(Material.TNT, Boolean::class.java),
     NUM_ROUNDS(Material.COMPASS, Int::class.java),
     HEALTH(Material.GOLDEN_APPLE, Double::class.java),
     ACTIVE_EFFECTS(Material.BREWING_STAND, Potion::class.java)
