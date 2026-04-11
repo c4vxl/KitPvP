@@ -5,6 +5,7 @@ import de.c4vxl.gamemanager.gma.game.Game
 import de.c4vxl.gamemanager.gma.player.GMAPlayer.Companion.gma
 import de.c4vxl.kitpvp.Main
 import de.c4vxl.kitpvp.data.extensions.Extensions.kitData
+import de.c4vxl.kitpvp.data.struct.kit.Kit
 import org.bukkit.Bukkit
 import org.bukkit.World
 import org.bukkit.event.EventHandler
@@ -13,6 +14,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockExplodeEvent
 import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.entity.EntityExplodeEvent
+import org.bukkit.event.player.PlayerDropItemEvent
 
 /**
  * This handler takes care of implementing kit rules that need custom handling
@@ -20,30 +22,6 @@ import org.bukkit.event.entity.EntityExplodeEvent
 class KitRulesHandler : Listener {
     init {
         Bukkit.getPluginManager().registerEvents(this, Main.instance)
-    }
-
-    @EventHandler
-    fun onBlockBreak(event: BlockBreakEvent) {
-        val game = event.player.gma.game ?: return
-        val kit = game.kitData.kit ?: return
-
-        // Block breaking enabled
-        if (kit.rules.isAllowBlockBreaking)
-            return
-
-        event.isCancelled = true
-    }
-
-    @EventHandler
-    fun onBlockPlace(event: BlockPlaceEvent) {
-        val game = event.player.gma.game ?: return
-        val kit = game.kitData.kit ?: return
-
-        // Block placing enabled
-        if (kit.rules.isAllowBlockPlacing)
-            return
-
-        event.isCancelled = true
     }
 
     /**
@@ -55,27 +33,45 @@ class KitRulesHandler : Listener {
         // The reason we need to use .contains is that the server might set a custom world prefix
         GMA.registeredGames.find { world.name.contains(it.id.asString) }
 
-    @EventHandler
-    fun onExplosion(event: EntityExplodeEvent) {
-        val game = getGame(event.entity.world) ?: return
+    /**
+     * Runs a passed function when a given game rule is enabled
+     * @param game The game
+     * @param gameRule The game rule to check for
+     * @param block The code to run when the game rule is enabled
+     */
+    private fun handle(game: Game?, gameRule: (Kit) -> Boolean, block: (Game, Kit) -> Unit) {
+        if (game == null) return
         val kit = game.kitData.kit ?: return
 
-        // Explosions enabled
-        if (kit.rules.isExplosionDamage)
-            return
+        if (gameRule(kit))
+            block(game, kit)
+    }
 
-        event.blockList().clear()
+    @EventHandler
+    fun onBlockBreak(event: BlockBreakEvent) {
+        handle(event.player.gma.game, { !it.rules.isAllowBlockBreaking }) { _, _ ->
+            event.isCancelled = true
+        }
+    }
+
+    @EventHandler
+    fun onBlockPlace(event: BlockPlaceEvent) {
+        handle(event.player.gma.game, { !it.rules.isAllowBlockPlacing }) { _, _ ->
+            event.isCancelled = true
+        }
+    }
+
+    @EventHandler
+    fun onExplosion(event: EntityExplodeEvent) {
+        handle(getGame(event.entity.world), { !it.rules.isExplosionDamage }) { _, _ ->
+            event.blockList().clear()
+        }
     }
 
     @EventHandler
     fun onExplosion(event: BlockExplodeEvent) {
-        val game = getGame(event.block.world) ?: return
-        val kit = game.kitData.kit ?: return
-
-        // Explosions enabled
-        if (kit.rules.isExplosionDamage)
-            return
-
-        event.blockList().clear()
+        handle(getGame(event.block.world), { !it.rules.isExplosionDamage }) { _, _ ->
+            event.blockList().clear()
+        }
     }
 }
