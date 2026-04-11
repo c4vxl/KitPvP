@@ -1,9 +1,6 @@
 package de.c4vxl.kitpvp.handlers
 
-import de.c4vxl.gamemanager.gma.event.game.GameEndEvent
-import de.c4vxl.gamemanager.gma.event.game.GameStartEvent
-import de.c4vxl.gamemanager.gma.event.game.GameStopEvent
-import de.c4vxl.gamemanager.gma.event.game.GameWorldLoadedEvent
+import de.c4vxl.gamemanager.gma.event.game.*
 import de.c4vxl.gamemanager.gma.event.player.GamePlayerEquipEvent
 import de.c4vxl.gamemanager.gma.event.player.GamePlayerLoseEvent
 import de.c4vxl.gamemanager.gma.event.player.GamePlayerRespawnEvent
@@ -37,6 +34,32 @@ class GameHandler : Listener {
 
         // Initialize rounds remaining flag
         game.kitData.roundsRemaining = kit?.rules?.numRounds ?: 1
+    }
+
+    @EventHandler
+    fun onGameStarted(event: GameStartedEvent) {
+        val kit = event.game.kitData.kit ?: return
+
+        event.game.players.forEach { player ->
+            val lang = player.language.child("kitpvp")
+            player.bukkitPlayer.sendMessage(
+                lang.getCmp("msg.start.1")
+                    .appendNewline().append(lang.getCmp("msg.start.2", kit.metadata.name))
+
+                    .let {
+                        if (kit.metadata.createdBy.isNotBlank())
+                            it.appendNewline().append(lang.getCmp("msg.start.3", kit.metadata.createdBy))
+                        else
+                            it
+                    }
+
+                    .appendNewline().append(lang.getCmp("msg.start.4", kit.rules.numRounds.toString()))
+                    .appendNewline().append(lang.getCmp("msg.start.5", event.game.size.toString()))
+                    .appendNewline().append(lang.getCmp("msg.start.6", event.game.worldManager.map?.name ?: "/"))
+                    .appendNewline()
+                    .appendNewline().append(lang.getCmp("msg.start.7"))
+            )
+        }
     }
 
     @EventHandler

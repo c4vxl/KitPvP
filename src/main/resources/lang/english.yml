@@ -184,7 +184,13 @@
 
 "queue.item.layout_editor": "<gold>Edit kit layout</gold>"
 
-
+"msg.start.1": "${prefix} <gold><b>Information about this game:</b></gold>"
+"msg.start.2": "${prefix} <gray>Kit Name:</gray> <white>$0</white>"
+"msg.start.3": "${prefix} <gray>Kit Creator:</gray> <white>$0</white>"
+"msg.start.4": "${prefix} <gray>Amount of rounds:</gray> <white>$0</white>"
+"msg.start.5": "${prefix} <gray>Game size:</gray> <white>$0</white>"
+"msg.start.6": "${prefix} <gray>Map:</gray> <white>$0</white>"
+"msg.start.7": "${prefix} <red>Good luck!</red>"
 "msg.end.1": "${prefix} <gold><b>Match results:</b></gold>"
 "msg.end.2": "${prefix} <gray>Your team has won <b>$0/$1</b> rounds.</gray>"
 "msg.end.3.won": "${prefix} <gray>You have <green>won</green> the game!</gray>"
