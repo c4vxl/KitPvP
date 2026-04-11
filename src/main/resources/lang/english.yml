@@ -197,6 +197,7 @@
 
 
 "queue.item.layout_editor": "<gold>Edit kit layout</gold>"
+"queue.msg.queuing": "<gray>Queuing for a game$0 (Found <white>$1/$2</white> players - Use <white>/quit</white> to leave)</gray>"
 
 
 "msg.error.no_game_found": "${prefix} <red>It looks like there is no other player hosting a kit right now.</red> Try again later or host your own kit!"
