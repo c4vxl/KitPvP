@@ -1,5 +1,6 @@
 package de.c4vxl.kitpvp.handlers
 
+import de.c4vxl.gamemanager.gma.event.game.GameEndEvent
 import de.c4vxl.gamemanager.gma.event.game.GameStartEvent
 import de.c4vxl.gamemanager.gma.event.game.GameStopEvent
 import de.c4vxl.gamemanager.gma.event.game.GameWorldLoadedEvent
@@ -100,7 +101,7 @@ class GameHandler : Listener {
 
         // Filter for teams that are still alive
         val aliveTeams = game.teamManager.teams.values.filter {
-            it.players.any { m ->
+            it.players.none { m ->
                 m.game != game                                                             // player has left the game
                         || m.isSpectating || m.bukkitPlayer.gameMode == GameMode.SPECTATOR // player is spectating
                         || m.bukkitPlayer.uniqueId == event.player.bukkitPlayer.uniqueId   // player just died
@@ -134,16 +135,24 @@ class GameHandler : Listener {
             .mapNotNull { (game.teamManager.teams[it.key] ?: return@mapNotNull null) to it.value }
             .sortedByDescending { it.second }
 
-        if (roundsWon.isNotEmpty()) {
-            val highestNumWins = roundsWon.maxOfOrNull { it.second } ?: 0
-            val winnerTeams = roundsWon.filter { it.second == highestNumWins }.map { it.first }.toSet()
-            val otherTeams = roundsWon.filterNot { it.first in winnerTeams }.map { it.first }
+        val highestNumWins = roundsWon.maxOfOrNull { it.second } ?: 0
+        val winnerTeams = roundsWon.filter { it.second == highestNumWins }.map { it.first }.toSet()
+        val otherTeams = roundsWon.filterNot { it.first in winnerTeams }.map { it.first }
 
+        if (roundsWon.isNotEmpty()) {
             // Call win/loose events
             winnerTeams.forEach { it.players.forEach { player -> GamePlayerWinEvent(player, game).callEvent() } }
             otherTeams.forEach { it.players.forEach { player -> GamePlayerLoseEvent(player, game).callEvent() } }
         }
 
+        // End game
+        GameEndEvent(
+            game,
+            winnerTeams.toList(),
+            otherTeams
+        ).callEvent()
+
+        // Stop game
         game.stop()
     }
 }
