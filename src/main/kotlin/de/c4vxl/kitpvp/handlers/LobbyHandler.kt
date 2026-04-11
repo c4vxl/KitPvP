@@ -3,11 +3,13 @@ package de.c4vxl.kitpvp.handlers
 import de.c4vxl.gamelobby.events.lobby.LobbyPlayerEquipEvent
 import de.c4vxl.gamelobby.lobby.Lobby
 import de.c4vxl.gamelobby.lobby.Lobby.isInLobby
+import de.c4vxl.gamemanager.gma.GMA
 import de.c4vxl.gamemanager.gma.event.player.GamePlayerJoinedEvent
 import de.c4vxl.gamemanager.gma.player.GMAPlayer.Companion.gma
 import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.Main
+import de.c4vxl.kitpvp.data.extensions.Extensions.kitData
 import de.c4vxl.kitpvp.ui.kit.KitUI
 import de.c4vxl.kitpvp.utils.Item.enchantmentGlow
 import de.c4vxl.kitpvp.utils.Item.onRightClick
@@ -42,8 +44,11 @@ class LobbyHandler : Listener {
                 if (!event.player.isInLobby)
                     return@onRightClick
 
-                KitUI(event.player, {
-
+                KitUI(event.player, { kit ->
+                    event.player.closeInventory()
+                    val game = GMA.getOrCreate(2, 1)
+                    game.kitData.kit = kit
+                    event.player.gma.join(game)
                 }, true)
             }
             .build()

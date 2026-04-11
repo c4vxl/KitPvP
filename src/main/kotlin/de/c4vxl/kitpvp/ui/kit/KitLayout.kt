@@ -91,7 +91,7 @@ class KitLayout(
         player.openInventory(baseInventory)
         player.inventory.clear()
 
-        UIHandler.nonClosable[player.uniqueId] = returnTo ?: this
+        returnTo?.let { UIHandler.nonClosable[player.uniqueId] = it }
         UIHandler.nonCancelled.add(player.uniqueId)
     }
 }

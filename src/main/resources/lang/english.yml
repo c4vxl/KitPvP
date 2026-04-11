@@ -165,3 +165,6 @@
 "ui.layout.item.offhand": "<gold>Offhand</gold>"
 
 "ui.layout.notice.immovable": "<gray>This item cannot be moved</gray>"
+
+
+"queue.item.layout_editor": "<gold>Edit kit layout</gold>"

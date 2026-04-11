@@ -3,10 +3,7 @@ package de.c4vxl.kitpvp
 import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.utils.ResourceUtils
 import de.c4vxl.kitpvp.data.Database
-import de.c4vxl.kitpvp.handlers.KitEditorHandler
-import de.c4vxl.kitpvp.handlers.LobbyHandler
-import de.c4vxl.kitpvp.handlers.TryOnHandler
-import de.c4vxl.kitpvp.handlers.UIHandler
+import de.c4vxl.kitpvp.handlers.*
 import dev.jorel.commandapi.CommandAPI
 import dev.jorel.commandapi.CommandAPIPaperConfig
 import org.bukkit.Bukkit
@@ -52,12 +49,16 @@ class Main : JavaPlugin() {
         saveResource("potionEffects.json", false)
         saveResource("serverKits.json", false)
 
-        if (Bukkit.getPluginManager().isPluginEnabled("GameLobby"))
-            LobbyHandler()
+        // Update lobby config
+        de.c4vxl.gamelobby.Main.config.set("config.queue.use-team-selection-item-solos", false)
 
+        // Register handlers
+        LobbyHandler()
         KitEditorHandler()
         UIHandler()
         TryOnHandler()
+        QueueHandler()
+        GameHandler()
 
         logger.info("[+] $name has been enabled!")
     }
