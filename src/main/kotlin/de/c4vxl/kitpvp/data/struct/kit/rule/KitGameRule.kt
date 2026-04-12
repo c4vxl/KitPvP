@@ -18,6 +18,7 @@ enum class KitGameRule(
     ALLOW_BLOCK_BREAKING(Material.IRON_PICKAXE, Boolean::class.java),
     ALLOW_BLOCK_PLACING(Material.SCAFFOLDING, Boolean::class.java),
     EXPLOSION_DAMAGE(Material.TNT, Boolean::class.java),
+    FRIENDLY_FIRE(Material.IRON_SWORD, Boolean::class.java),
     NUM_ROUNDS(Material.COMPASS, Int::class.java),
     HEALTH(Material.GOLDEN_APPLE, Double::class.java),
     ACTIVE_EFFECTS(Material.BREWING_STAND, Potion::class.java)

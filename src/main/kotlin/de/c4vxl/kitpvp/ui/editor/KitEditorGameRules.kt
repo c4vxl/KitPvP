@@ -140,6 +140,8 @@ class KitEditorGameRules(
 
             addItem(createGameRuleItem(KitGameRule.EXPLOSION_DAMAGE, editor.kit.rules.isExplosionDamage) { editor.kit.rules.isExplosionDamage = it })
 
+            addItem(createGameRuleItem(KitGameRule.FRIENDLY_FIRE, editor.kit.rules.isFriendlyFire) { editor.kit.rules.isFriendlyFire = it })
+
             addItem(createGameRuleItem(KitGameRule.NUM_ROUNDS, editor.kit.rules.numRounds) {
                 editor.kit.rules.numRounds = max(1, min(it, 10))
             })

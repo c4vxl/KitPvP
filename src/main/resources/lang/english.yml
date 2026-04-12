@@ -48,6 +48,10 @@
 "rule.allow_block_placing.name.true": "<gold>Allow block placing:</gold> <green>Yes</green>"
 "rule.allow_block_placing.name.false": "<gold>Allow block placing:</gold> <red>No</red>"
 "rule.allow_block_placing.desc": "<gray>If disabled, players won't be able to place blocks</gray>"
+"rule.friendly_fire.name.true": "<gold>Allow friendly fire:</gold> <green>Yes</green>"
+"rule.friendly_fire.name.false": "<gold>Allow friendly fire:</gold> <red>No</red>"
+"rule.friendly_fire.desc": "<gray>If enabled, team members will be able to attack each other</gray>"
+
 "rule.num_rounds.name": "<gold>Amount of rounds:</gold> <green>$0</green>"
 "rule.num_rounds.desc": "<gray>Sets the amount of matches</gray>"
 "rule.health.name": "<gold>Health:</gold> <green>$0</green>"
