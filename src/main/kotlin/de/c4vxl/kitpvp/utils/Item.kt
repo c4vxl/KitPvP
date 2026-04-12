@@ -75,6 +75,12 @@ object Item {
     fun ItemBuilder.guiItem(action: ((InventoryClickEvent) -> Unit)? = null): ItemBuilder {
         this.onEvent(InventoryClickEvent::class.java, object : ItemBuilder.ItemEventHandler<InventoryClickEvent> {
             override fun handle(event: InventoryClickEvent) {
+                // GMA triggers this event also if only event.cursor is present
+                // We only care about event.currentItem
+                // So exit if it isn't present
+                if (event.currentItem == null)
+                    return
+
                 if (event.whoClicked.type != EntityType.PLAYER)
                     return
 
