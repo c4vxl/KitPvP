@@ -8,11 +8,9 @@ import de.c4vxl.kitpvp.Main
 import de.c4vxl.kitpvp.data.extensions.Extensions.data
 import de.c4vxl.kitpvp.data.extensions.Extensions.kitData
 import de.c4vxl.kitpvp.data.extensions.Extensions.lastKit
+import it.unimi.dsi.fastutil.ints.Int2IntFunctions.UnmodifiableFunction
 import net.kyori.adventure.title.TitlePart
-import org.bukkit.Bukkit
-import org.bukkit.GameMode
-import org.bukkit.GameRules
-import org.bukkit.Sound
+import org.bukkit.*
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -116,6 +114,10 @@ class GameHandler : Listener {
             // Independent game rules
             listOf(GameRules.ADVANCE_WEATHER) to false
         ).forEach { (gameRules, value) -> gameRules.forEach { world.setGameRule(it, value) } }
+
+        // Set difficulty
+        world.difficulty = Difficulty.NORMAL
+        world.time = 6000
     }
 
     @EventHandler
