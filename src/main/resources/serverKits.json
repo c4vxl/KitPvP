@@ -2,75 +2,67 @@
   {
     "icon": "DIAMOND_SWORD",
     "kit": {
-      "metadata": {
-        "name": "Only Sword",
-        "createdBy": "",
-        "createdAt": "",
-        "lastEdit": ""
-      },
+      "metadata": {"name": "Only Sword", "createdBy": "", "createdAt": "", "lastEdit": ""},
       "inventory": {
-        "0": {
-          "material": "DIAMOND_SWORD",
-          "amount": 1,
-          "unbreakable": true,
-          "enchantments": {
-            "DAMAGE_ALL": 1
-          },
-          "effects": {}
-        },
-        "8": {
-          "material": "TOTEM_OF_UNDYING",
-          "amount": 1,
-          "unbreakable": false,
-          "enchantments": {},
-          "effects": {}
-        }
+        "0": {"material": "DIAMOND_SWORD", "amount": 1, "unbreakable": true, "enchantments": {"DAMAGE_ALL": 1}, "effects": {}},
+        "8": {"material": "TOTEM_OF_UNDYING", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}}
       },
-      "helmet": {
-        "material": "DIAMOND_HELMET",
-        "amount": 1,
-        "unbreakable": false,
-        "enchantments": {},
-        "effects": {}
+      "helmet": {"material": "DIAMOND_HELMET", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
+      "chestplate": {"material": "DIAMOND_CHESTPLATE", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
+      "leggings": {"material": "DIAMOND_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
+      "boots": {"material": "DIAMOND_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
+      "offhand": {"material": "GOLDEN_APPLE", "amount": 10, "unbreakable": false, "enchantments": {}, "effects": {}},
+      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isAllowBlockBreaking": true, "numRounds": 3, "health": 20.0, "activeEffects": {}}
+    }
+  },
+  {
+    "icon": "END_CRYSTAL",
+    "kit": {
+      "metadata": {"name": "Crystal PvP", "createdBy": "", "createdAt": "", "lastEdit": ""},
+      "inventory": {
+        "0": {"material": "OBSIDIAN", "amount": 64, "unbreakable": false, "enchantments": {}, "effects": {}},
+        "2": {"material": "ENDER_PEARL", "amount": 16, "unbreakable": false, "enchantments": {}, "effects": {}},
+        "29": {"material": "ENDER_PEARL", "amount": 16, "unbreakable": false, "enchantments": {}, "effects": {}},
+        "20": {"material": "ENDER_PEARL", "amount": 16, "unbreakable": false, "enchantments": {}, "effects": {}},
+        "27": {"material": "OBSIDIAN", "amount": 64, "unbreakable": false, "enchantments": {}, "effects": {}},
+        "18": {"material": "OBSIDIAN", "amount": 64, "unbreakable": false, "enchantments": {}, "effects": {}},
+        "1": {"material": "END_CRYSTAL", "amount": 64, "unbreakable": false, "enchantments": {}, "effects": {}},
+        "19": {"material": "END_CRYSTAL", "amount": 64, "unbreakable": false, "enchantments": {}, "effects": {}},
+        "28": {"material": "END_CRYSTAL", "amount": 64, "unbreakable": false, "enchantments": {}, "effects": {}},
+        "7": {"material": "RESPAWN_ANCHOR", "amount": 64, "unbreakable": false, "enchantments": {}, "effects": {}},
+        "34": {"material": "RESPAWN_ANCHOR","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "8": {"material": "GLOWSTONE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "35": {"material": "GLOWSTONE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "26": {"material": "GLOWSTONE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "5": {"material": "NETHERITE_SWORD","amount": 1,"unbreakable": false,"enchantments": { "KNOCKBACK": 2, "DURABILITY": 3, "MENDING": 1},"effects": {}},
+        "6": {"material": "NETHERITE_PICKAXE","amount": 1,"unbreakable": false,"enchantments": { "DIG_SPEED": 5, "DURABILITY": 3, "MENDING": 1},"effects": {}},
+        "3": {"material": "GOLDEN_APPLE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "4": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "31": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "30": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "21": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "22": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "23": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "32": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "33": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "24": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "25": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "16": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "17": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "15": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "14": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "13": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "12": {"material": "TOTEM_OF_UNDYING","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "9": {"material": "EXPERIENCE_BOTTLE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "10": {"material": "EXPERIENCE_BOTTLE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "11": {"material": "EXPERIENCE_BOTTLE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}}
       },
-      "chestplate": {
-        "material": "DIAMOND_CHESTPLATE",
-        "amount": 1,
-        "unbreakable": false,
-        "enchantments": {},
-        "effects": {}
-      },
-      "leggings": {
-        "material": "DIAMOND_LEGGINGS",
-        "amount": 1,
-        "unbreakable": false,
-        "enchantments": {},
-        "effects": {}
-      },
-      "boots": {
-        "material": "DIAMOND_BOOTS",
-        "amount": 1,
-        "unbreakable": false,
-        "enchantments": {},
-        "effects": {}
-      },
-      "offhand": {
-        "material": "GOLDEN_APPLE",
-        "amount": 10,
-        "unbreakable": false,
-        "enchantments": {},
-        "effects": {}
-      },
-      "rules": {
-        "isAlwaysDay": true,
-        "isKeepInventory": true,
-        "isFallDamage": true,
-        "isItemDrop": true,
-        "isAllowBlockBreaking": true,
-        "numRounds": 3,
-        "health": 20.0,
-        "activeEffects": {}
-      }
+      "helmet": {"material": "NETHERITE_HELMET", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_ENVIRONMENTAL": 0, "PROTECTION_EXPLOSIONS": 3, "DURABILITY": 3, "MENDING": 1}, "effects": {}},
+      "chestplate": {"material": "NETHERITE_CHESTPLATE", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_EXPLOSIONS": 3, "DURABILITY": 3, "MENDING": 1}, "effects": {}},
+      "leggings": {"material": "NETHERITE_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_EXPLOSIONS": 3, "SWIFT_SNEAK": 1, "MENDING": 1, "DURABILITY": 3}, "effects": {}},
+      "boots": {"material": "NETHERITE_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_EXPLOSIONS": 3, "MENDING": 3, "DURABILITY": 3}, "effects": {}},
+      "offhand": {"material": "TOTEM_OF_UNDYING", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
+      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": false, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}}
     }
   }
 ]
