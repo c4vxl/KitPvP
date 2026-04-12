@@ -1,10 +1,9 @@
 package de.c4vxl.kitpvp.handlers
 
 import de.c4vxl.gamelobby.events.lobby.LobbyPlayerEquipEvent
-import de.c4vxl.gamelobby.lobby.Lobby
 import de.c4vxl.gamelobby.lobby.Lobby.isInLobby
+import de.c4vxl.gamemanager.gma.event.game.GameStartEvent
 import de.c4vxl.gamemanager.gma.event.player.GamePlayerJoinedEvent
-import de.c4vxl.gamemanager.gma.event.player.GamePlayerQuitEvent
 import de.c4vxl.gamemanager.gma.player.GMAPlayer.Companion.gma
 import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.language.Language.Companion.language
@@ -12,7 +11,6 @@ import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.Main
 import de.c4vxl.kitpvp.data.extensions.Extensions.kitData
 import de.c4vxl.kitpvp.data.extensions.Extensions.lastKit
-import de.c4vxl.kitpvp.ui.general.AnvilUI
 import de.c4vxl.kitpvp.ui.general.PlayerSearchUI
 import de.c4vxl.kitpvp.ui.kit.KitUI
 import de.c4vxl.kitpvp.ui.queue.GameQueueUI
@@ -30,8 +28,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.inventory.InventoryType
-import org.bukkit.event.player.PlayerInteractAtEntityEvent
-import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.persistence.PersistentDataType
@@ -180,7 +176,9 @@ class LobbyHandler : Listener {
     }
 
     @EventHandler
-    fun onGameQuit(event: GamePlayerQuitEvent) {
-        event.player.bukkitPlayer.lastKit = event.game.kitData.kit
+    fun onGameStart(event: GameStartEvent) {
+        event.game.players.forEach {
+            it.bukkitPlayer.lastKit = event.game.kitData.kit
+        }
     }
 }
