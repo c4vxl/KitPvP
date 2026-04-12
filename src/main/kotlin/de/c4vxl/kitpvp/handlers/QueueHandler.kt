@@ -54,7 +54,7 @@ class QueueHandler : Listener {
         val lang = player.language.child("kitpvp")
         val game = player.gma.game ?: return
 
-        val kitChooserSlot = if (game.size.teamSize == 1) 1 else 4
+        val kitChooserSlot = if (game.size.teamSize == 1) 4 else 5
 
         player.inventory.setItem(kitChooserSlot, ItemBuilder(
             Material.BOOK,
