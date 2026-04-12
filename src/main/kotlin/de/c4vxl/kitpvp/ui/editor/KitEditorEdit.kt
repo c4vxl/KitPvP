@@ -60,7 +60,7 @@ class KitEditorEdit(
                         Material.FIREWORK_STAR,
                         editor.language.getCmp("editor.page.edit.item.amount.name", item.amount.toString()),
                         lore = buildList {
-                            repeat(6) { i -> add(editor.language.getCmp("editor.page.edit.item.amount.lore.${i + 1}", item.amount.toString()) as TextComponent) }
+                            repeat(7) { i -> add(editor.language.getCmp("editor.page.edit.item.amount.lore.${i + 1}", item.amount.toString(), item.material.maxStackSize.toString()) as TextComponent) }
                         }.toMutableList()
                     )
                         .guiItem {
@@ -70,6 +70,7 @@ class KitEditorEdit(
                                 else if (it.isRightClick) -1
                                 else if (it.isLeftClick && it.isShiftClick) 8
                                 else if (it.isLeftClick) 1
+                                else if (it.action.name.contains("DROP")) item.material.maxStackSize - item.amount
                                 else 0
 
                             // Update amount
