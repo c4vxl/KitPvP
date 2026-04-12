@@ -57,10 +57,10 @@
         "10": {"material": "EXPERIENCE_BOTTLE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
         "11": {"material": "EXPERIENCE_BOTTLE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}}
       },
-      "helmet": {"material": "NETHERITE_HELMET", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_ENVIRONMENTAL": 0, "PROTECTION_EXPLOSIONS": 3, "DURABILITY": 3, "MENDING": 1}, "effects": {}},
-      "chestplate": {"material": "NETHERITE_CHESTPLATE", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_EXPLOSIONS": 3, "DURABILITY": 3, "MENDING": 1}, "effects": {}},
+      "helmet": {"material": "NETHERITE_HELMET", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_ENVIRONMENTAL": 3, "DURABILITY": 3, "MENDING": 1}, "effects": {}},
+      "chestplate": {"material": "NETHERITE_CHESTPLATE", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_ENVIRONMENTAL": 3, "DURABILITY": 3, "MENDING": 1}, "effects": {}},
       "leggings": {"material": "NETHERITE_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_EXPLOSIONS": 3, "SWIFT_SNEAK": 1, "MENDING": 1, "DURABILITY": 3}, "effects": {}},
-      "boots": {"material": "NETHERITE_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_EXPLOSIONS": 3, "MENDING": 3, "DURABILITY": 3}, "effects": {}},
+      "boots": {"material": "NETHERITE_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_ENVIRONMENTAL": 3, "MENDING": 3, "DURABILITY": 3}, "effects": {}},
       "offhand": {"material": "TOTEM_OF_UNDYING", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": false, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}}
     }
