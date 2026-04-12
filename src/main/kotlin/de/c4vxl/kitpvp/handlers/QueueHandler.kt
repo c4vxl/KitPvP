@@ -27,9 +27,13 @@ class QueueHandler : Listener {
                     return@forEach
 
                 game.players.forEach {
-                    it.bukkitPlayer.sendActionBar(it.language.child("kitpvp").getCmp("queue.msg.queuing",
-                        ".".repeat(i + 1), (game.players.size - 1).toString(), (game.size.maxPlayers - 1).toString()
-                    ))
+                    if (game.kitData.isTryOn)
+                        it.bukkitPlayer.sendActionBar(it.language.child("kitpvp").getCmp("tryon.title.exit_notice"))
+
+                    else
+                        it.bukkitPlayer.sendActionBar(it.language.child("kitpvp").getCmp("queue.msg.queuing",
+                            ".".repeat(i + 1), (game.players.size - 1).toString(), (game.size.maxPlayers - 1).toString()
+                        ))
                 }
             }
 
