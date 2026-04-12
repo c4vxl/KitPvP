@@ -76,10 +76,14 @@
 "editor.page.enchant.item.lore.4": "<white>Right click:</white> <gray>-1</gray>"
 "editor.page.enchant.item.lore.5": "<white>Shift click</white> <gray>to reset</gray>"
 
+"editor.page.edit.item.not_available.lore": "<gray>This modifier is not available for this item!</gray>"
 "editor.page.edit.item.enchant.name": "<gold>Customize Enchantments</gold>"
+"editor.page.edit.item.enchant.not_available": "<red>Customize Enchantments: Not available</red>"
 "editor.page.edit.item.unbreakable.name.true": "<gold>Unbreakable:</gold> <green>Yes</green>"
 "editor.page.edit.item.unbreakable.name.false": "<gold>Unbreakable:</gold> <red>No</red>"
+"editor.page.edit.item.unbreakable.not_available": "<red>Unbreakable: Not available</red>"
 "editor.page.edit.item.amount.name": "<gold>Amount</gold>"
+"editor.page.edit.item.amount.not_available": "<red>Amount: Not available</red>"
 "editor.page.edit.item.amount.lore.1": "<gray>Current:</gray> <gold>$0</gold>"
 "editor.page.edit.item.amount.lore.2": ""
 "editor.page.edit.item.amount.lore.3": "<white>Left click:</white> <gray>+1</gray>"
@@ -89,7 +93,9 @@
 "editor.page.edit.item.amount.lore.7": "<white>Drop item:</white> <gray>Set to $1</gray>"
 "editor.page.edit.item.rename.name": "<gold>Rename item</gold>"
 "editor.page.edit.item.type.name": "<gold>Change material</gold>"
+"editor.page.edit.item.type.not_available": "<red>Change Material: Not available</red>"
 "editor.page.edit.item.effect.name": "<gold>Edit effects</gold>"
+"editor.page.edit.item.effect.not_available": "<red>Effects: Not available</red>"
 
 "editor.page.edit.effect.title": "${editor.page.edit.title} - Effects"
 

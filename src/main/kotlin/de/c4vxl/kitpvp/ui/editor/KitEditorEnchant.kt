@@ -26,6 +26,7 @@ import kotlin.math.min
 class KitEditorEnchant(
     val editor: KitEditor,
     var item: KitItem,
+    val enchantments: List<Enchantment> = emptyList(),
     val onUpdate: (KitItem) -> Unit
 ) {
     private val title = editor.language.getCmp("editor.page.enchant.title", editor.kit.metadata.name)
@@ -64,9 +65,8 @@ class KitEditorEnchant(
                         .build())
 
                     // Add enchantment books
-                    val possible = item.builder.build().applicableEnchantments
                     repeat(21) { i ->
-                        possible.getOrNull(i)
+                        enchantments.getOrNull(i)
                             ?.let { addItem(ItemBuilder(
                                 enchantmentIcons.getOrDefault(it, Material.ENCHANTED_BOOK),
                                 Component.translatable(it.translationKey()),

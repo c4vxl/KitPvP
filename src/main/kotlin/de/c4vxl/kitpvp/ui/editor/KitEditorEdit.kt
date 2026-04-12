@@ -8,7 +8,9 @@ import de.c4vxl.kitpvp.ui.general.AnvilUI
 import de.c4vxl.kitpvp.ui.general.PotionEffectsUI
 import de.c4vxl.kitpvp.ui.type.UI
 import de.c4vxl.kitpvp.utils.Item.addMarginItems
+import de.c4vxl.kitpvp.utils.Item.applicableEnchantments
 import de.c4vxl.kitpvp.utils.Item.guiItem
+import de.c4vxl.kitpvp.utils.Item.marginItem
 import net.kyori.adventure.text.TextComponent
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -32,7 +34,7 @@ class KitEditorEdit(
         get() =
             Bukkit.createInventory(null, 9 * 5, title)
                 .apply {
-                    addMarginItems(0..44)
+                    addMarginItems(0..28, 34..44)
 
                     // Save
                     setItem(0, ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, editor.language.getCmp("editor.page.edit.save"))
@@ -56,7 +58,7 @@ class KitEditorEdit(
                         .build())
 
                     // Change amount
-                    setItem(30, ItemBuilder(
+                    addItem(ItemBuilder(
                         Material.FIREWORK_STAR,
                         editor.language.getCmp("editor.page.edit.item.amount.name", item.amount.toString()),
                         lore = buildList {
@@ -82,24 +84,37 @@ class KitEditorEdit(
                         }
                         .build())
 
+                    fun filler(key: String) =
+                        addItem(marginItem(Material.BLACK_STAINED_GLASS_PANE, editor.language.get("editor.page.edit.item.$key.not_available"))
+                            .apply { itemMeta = itemMeta.apply { lore(listOf(editor.language.getCmp("editor.page.edit.item.not_available.lore"))) } })
+
                     // Enchant item
-                    setItem(31, ItemBuilder(Material.ENCHANTING_TABLE, editor.language.getCmp("editor.page.edit.item.enchant.name"))
-                        .guiItem { KitEditorEnchant(editor, item, onUpdate) }
-                        .build())
+                    item.builder.build().applicableEnchantments
+                        .takeIf { it.isNotEmpty() }
+                        ?.let { enchantments ->
+                            addItem(ItemBuilder(Material.ENCHANTING_TABLE, editor.language.getCmp("editor.page.edit.item.enchant.name"))
+                                .guiItem { KitEditorEnchant(editor, item, enchantments, onUpdate) }
+                                .build())
+                        }
+                        ?: filler("enchant")
 
                     // Unbreakable item
-                    setItem(32, ItemBuilder(Material.BEDROCK, editor.language.getCmp("editor.page.edit.item.unbreakable.name.${item.unbreakable}"))
-                        .guiItem {
-                            item.unbreakable = !item.unbreakable
+                    if (item.material.maxDurability.toInt() != 0)
+                        addItem(ItemBuilder(Material.BEDROCK, editor.language.getCmp("editor.page.edit.item.unbreakable.name.${item.unbreakable}"))
+                            .guiItem {
+                                item.unbreakable = !item.unbreakable
 
-                            (it.whoClicked as Player).playSound(it.whoClicked.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 3f, 1f)
-                            open()
-                        }
-                        .build())
+                                (it.whoClicked as Player).playSound(it.whoClicked.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 3f, 1f)
+                                open()
+                            }
+                            .build())
+                    else
+                        filler("unbreakable")
 
+                    // Type changer
                     val type = ItemType.fromMaterial(item.material)
                     if (type != null)
-                        setItem(40, ItemBuilder(Material.FLINT, editor.language.getCmp("editor.page.edit.item.type.name"))
+                        addItem(ItemBuilder(Material.FLINT, editor.language.getCmp("editor.page.edit.item.type.name"))
                             .guiItem {
                                 KitEditorType(editor, item) {
                                     item = it
@@ -107,9 +122,12 @@ class KitEditorEdit(
                                 }
                             }
                             .build())
+                    else
+                        filler("type")
 
+                    // Effects changer
                     if (item.material.name.contains("ARROW") || item.material.name.contains("POTION"))
-                        setItem(39, ItemBuilder(Material.BREWING_STAND, editor.language.getCmp("editor.page.edit.item.effect.name"))
+                        addItem(ItemBuilder(Material.BREWING_STAND, editor.language.getCmp("editor.page.edit.item.effect.name"))
                             .guiItem {
                                 PotionEffectsUI(
                                     editor.player,
@@ -127,6 +145,8 @@ class KitEditorEdit(
                                 )
                             }
                             .build())
+                    else
+                        filler("effect")
                 }
 
     init {
