@@ -42,6 +42,9 @@ object Queuing {
      */
     fun findGame(size: GameSize, kit: Kit? = null): Game? =
         GMA.registeredGames.find {
-            return@find it.size.equals(size.teamAmount, size.teamSize) && !it.isPrivate && (it.kitData.kit == kit || kit == null)
+            return@find it.isQueuing
+                    && it.size.equals(size.teamAmount, size.teamSize)
+                    && !it.isPrivate
+                    && (it.kitData.kit == kit || kit == null)
         }
 }
