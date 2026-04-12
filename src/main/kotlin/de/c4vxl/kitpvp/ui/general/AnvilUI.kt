@@ -43,8 +43,8 @@ open class AnvilUI(
                 )
                     .guiItem {
                         val view = it.view as? AnvilView
-                        onInput(view?.renameText ?: "")
                         returnTo?.open() ?: player.closeInventory()
+                        onInput(view?.renameText ?: "")
                     }
                     .onDrop { it.itemDrop.remove() }
                     .build())
