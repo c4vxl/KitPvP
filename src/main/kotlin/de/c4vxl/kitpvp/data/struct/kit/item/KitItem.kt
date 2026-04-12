@@ -34,7 +34,7 @@ data class KitItem(
     val effectsMap get() =
         effects.mapNotNull { (PotionEffectType.getByName(it.key) ?: return@mapNotNull null) to it.value }.toMap()
 
-    val itemMeta: ItemMeta get() {
+    val itemMeta: ItemMeta? get() {
         val meta = ItemStack(material).itemMeta
 
         (meta as? PotionMeta)?.apply {
