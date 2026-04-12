@@ -11,15 +11,22 @@ object KitPreferenceUtils {
     fun calculateOffsets(originalInventory: Map<Int, KitItem>, updatedInventory: Map<Int, KitItem>): MutableMap<Int, Int> {
         val offsets = mutableMapOf<Int, Int>()
 
+        // Tracks what slots in the original inventory have already been mapped
+        // This has to be done to prevent confusion of two slots with equal items
+        val usedOriginalSlots = mutableSetOf<Int>()
+
         for (slot in 0..35) {
             val newItem = updatedInventory[slot] ?: continue
 
             val originalSlot = originalInventory.entries
-                .firstOrNull { (_, value) -> value == newItem }
+                .filter { it.value == newItem }
+                .firstOrNull { it.key !in usedOriginalSlots }
                 ?.key
 
-            if (originalSlot != null && originalSlot != slot)
-                offsets[originalSlot] = slot
+            originalSlot?.let {
+                usedOriginalSlots.add(it)
+                offsets[it] = slot
+            }
         }
 
         return offsets

@@ -156,6 +156,9 @@ class LobbyHandler : Listener {
             return
 
         Bukkit.getScheduler().callSyncMethod(Main.instance) {
+            if (player.gma.game?.isRunning == true)
+                return@callSyncMethod
+
             if (player.gma.isInGame) {
                 // Equip lobby items
                 event.player.location.let {
