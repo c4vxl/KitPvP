@@ -98,10 +98,7 @@ class LobbyHandler : Listener {
             }
         } else {
             // Equip lobby items
-            event.player.location.let {
-                Lobby.send(player)
-                player.teleport(it)
-            }
+            LobbyPlayerEquipEvent(player).callEvent()
         }
     }
 
