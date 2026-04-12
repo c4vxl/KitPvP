@@ -18,6 +18,7 @@ data class KitGameRules(
     var isAllowBlockPlacing: Boolean = true,
     var isExplosionDamage: Boolean = true,
     var isFriendlyFire: Boolean = false,
+    var isSelfDamage: Boolean = true,
     var numRounds: Int = 3,
     var health: Double = 20.0,
     var activeEffects: MutableMap<String, Int> = mutableMapOf()

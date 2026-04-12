@@ -1,6 +1,7 @@
 package de.c4vxl.kitpvp.handlers
 
 import de.c4vxl.gamemanager.gma.GMA
+import de.c4vxl.gamemanager.gma.event.player.GamePlayerSelfDamageEvent
 import de.c4vxl.gamemanager.gma.event.team.GamePlayerFriendlyFireEvent
 import de.c4vxl.gamemanager.gma.game.Game
 import de.c4vxl.gamemanager.gma.player.GMAPlayer.Companion.gma
@@ -87,5 +88,11 @@ class KitRulesHandler : Listener {
     fun onFriendlyFire(event: GamePlayerFriendlyFireEvent) {
         val kit = event.game.kitData.kit ?: return
         event.allow = kit.rules.isFriendlyFire
+    }
+
+    @EventHandler
+    fun onSelfDamage(event: GamePlayerSelfDamageEvent) {
+        val kit = event.game.kitData.kit ?: return
+        event.allow = kit.rules.isSelfDamage
     }
 }

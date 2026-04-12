@@ -51,7 +51,9 @@
 "rule.friendly_fire.name.true": "<gold>Allow friendly fire:</gold> <green>Yes</green>"
 "rule.friendly_fire.name.false": "<gold>Allow friendly fire:</gold> <red>No</red>"
 "rule.friendly_fire.desc": "<gray>If enabled, team members will be able to attack each other</gray>"
-
+"rule.self_damage.name.true": "<gold>Allow self damage:</gold> <green>Yes</green>"
+"rule.self_damage.name.false": "<gold>Allow self damage:</gold> <red>No</red>"
+"rule.self_damage.desc": "<gray>If disabled, players won't be able to inflict damage to themselves</gray>"
 "rule.num_rounds.name": "<gold>Amount of rounds:</gold> <green>$0</green>"
 "rule.num_rounds.desc": "<gray>Sets the amount of matches</gray>"
 "rule.health.name": "<gold>Health:</gold> <green>$0</green>"

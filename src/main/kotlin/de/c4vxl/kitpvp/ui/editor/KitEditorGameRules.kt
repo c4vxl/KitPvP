@@ -142,6 +142,8 @@ class KitEditorGameRules(
 
             addItem(createGameRuleItem(KitGameRule.FRIENDLY_FIRE, editor.kit.rules.isFriendlyFire) { editor.kit.rules.isFriendlyFire = it })
 
+            addItem(createGameRuleItem(KitGameRule.SELF_DAMAGE, editor.kit.rules.isSelfDamage) { editor.kit.rules.isSelfDamage = it })
+
             addItem(createGameRuleItem(KitGameRule.NUM_ROUNDS, editor.kit.rules.numRounds) {
                 editor.kit.rules.numRounds = max(1, min(it, 10))
             })
