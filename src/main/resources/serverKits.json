@@ -83,5 +83,36 @@
       "offhand": {"material": "SHIELD", "amount": 1, "unbreakable": false, "enchantments": {"DURABILITY": 3}, "effects": {}},
       "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}}
     }
+  },
+  {
+    "icon": "GOLDEN_APPLE",
+    "kit": {
+      "metadata": {"name": "UHC", "createdBy": "", "createdAt": "", "lastEdit": ""},
+      "inventory": {
+        "0": {"material": "DIAMOND_SWORD","amount": 1,"unbreakable": false,"enchantments": {"DAMAGE_ALL": 3},"effects": {}},
+        "8": {"material": "COBWEB","amount": 10,"unbreakable": false,"enchantments": {},"effects": {}},
+        "5": {"material": "LAVA_BUCKET","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "2": {"material": "GOLDEN_APPLE","amount": 8,"unbreakable": false,"enchantments": {},"effects": {}},
+        "3": {"material": "ENCHANTED_GOLDEN_APPLE","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "4": {"material": "COBBLESTONE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "1": {"material": "DIAMOND_PICKAXE","amount": 1,"unbreakable": false,"enchantments": {"DIG_SPEED": 5},"effects": {}},
+        "31": {"material": "COBBLESTONE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "6": {"material": "BOW","amount": 1,"unbreakable": false,"enchantments": {"ARROW_KNOCKBACK": 1, "ARROW_DAMAGE": 1},"effects": {}},
+        "17": {"material": "ARROW","amount": 15,"unbreakable": false,"enchantments": {},"effects": {}},
+        "33": {"material": "CROSSBOW","amount": 1,"unbreakable": false,"enchantments": {  "PIERCING": 1},"effects": {}},
+        "13": {"material": "LAVA_BUCKET","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "7": {"material": "WATER_BUCKET","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "22": {"material": "WATER_BUCKET","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "21": {"material": "WATER_BUCKET","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "12": {"material": "LAVA_BUCKET","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+        "30": {"material": "WATER_BUCKET","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}}
+      },
+      "helmet": {"material": "DIAMOND_HELMET","amount": 1,"unbreakable": false,"enchantments": {"PROTECTION_ENVIRONMENTAL": 2},"effects": {}},
+      "chestplate": {"material": "DIAMOND_CHESTPLATE","amount": 1,"unbreakable": false,"enchantments": {"PROTECTION_ENVIRONMENTAL": 2},"effects": {}},
+      "leggings": {"material": "DIAMOND_LEGGINGS","amount": 1,"unbreakable": false,"enchantments": {"PROTECTION_ENVIRONMENTAL": 2},"effects": {}},
+      "boots": {"material": "DIAMOND_BOOTS","amount": 1,"unbreakable": false,"enchantments": {"PROTECTION_ENVIRONMENTAL": 2},"effects": {}},
+      "offhand": {"material": "SHIELD","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
+      "rules": {"isAlwaysDay": true,"isKeepInventory": true,"isFallDamage": true,"isItemDrop": true,"isBlockDrops": true,"isEntityDrops": true,"isAllowBlockBreaking": true,"isAllowBlockPlacing": true,"isExplosionDamage": true,"isFriendlyFire": false,"isSelfDamage": true,"numRounds": 3,"health": 20.0,"activeEffects": {}}
+    }
   }
 ]
