@@ -40,7 +40,7 @@ class PotionEffectsUI(
                 type to material
             }.toMap()
 
-    private val numPages = effects.size / 14
+    private val numPages: Int = (effects.size + 13) / 14
 
     private var page: Int = 0
 
@@ -48,7 +48,7 @@ class PotionEffectsUI(
         get() =
             Bukkit.createInventory(null, 9 * 6, title)
                 .apply {
-                    addMarginItems(0..17, 45..53, 0..45 step 9, 17..53 step 9)
+                    addMarginItems(0..17, 45..53, 36..44, 0..45 step 9, 17..53 step 9)
 
                     // Back item
                     setItem(8, ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, language.getCmp("ui.effect.item.save"))
@@ -91,8 +91,10 @@ class PotionEffectsUI(
                 }
 
     private fun getItemsForPage(page: Int) =
-        effects.toList().subList(14 * page, 14 * page + 14)
-            .map { (effect, icon) ->
+        effects.toList().subList(
+            (14 * page).coerceAtMost(effects.size),
+            (14 * page + 14).coerceAtMost(effects.size)
+        ).map { (effect, icon) ->
                 ItemBuilder(
                     icon,
                     Component.translatable(effect.translationKey()),
@@ -124,6 +126,7 @@ class PotionEffectsUI(
             }
 
     private fun open(page: Int) {
+        println(page)
         player.playSound(player.location, Sound.BLOCK_SCAFFOLDING_BREAK, 5f, 0.5f)
         player.openInventory(baseInventory.apply {
             getItemsForPage(page).forEach { addItem(it) }
