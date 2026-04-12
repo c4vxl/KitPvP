@@ -1,6 +1,7 @@
 package de.c4vxl.kitpvp.data.struct.game
 
 import de.c4vxl.gamemanager.gma.game.Game
+import de.c4vxl.gamemanager.gma.player.GMAPlayer
 import de.c4vxl.kitpvp.data.Database
 import de.c4vxl.kitpvp.data.extensions.Extensions.isServerKit
 import de.c4vxl.kitpvp.data.extensions.Extensions.kitData
@@ -13,8 +14,12 @@ data class GameData(
     var roundsRemaining: Int = -1,
     var roundsWon: MutableMap<Int, Int> = mutableMapOf(),
     val offsets: MutableMap<Player, Map<Int, Int>> = mutableMapOf(),
+    var challenged: GMAPlayer? = null,
     var isTryOn: Boolean = false
 ) {
+    val isDuel: Boolean get() =
+        challenged != null
+
     /**
      * Fetches the player offset preferences
      * @param player The player

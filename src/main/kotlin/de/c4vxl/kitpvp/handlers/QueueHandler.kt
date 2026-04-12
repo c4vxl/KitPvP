@@ -31,6 +31,12 @@ class QueueHandler : Listener {
                     if (game.kitData.isTryOn)
                         it.bukkitPlayer.sendActionBar(it.language.child("kitpvp").getCmp("tryon.title.exit_notice"))
 
+                    else if (game.kitData.isDuel)
+                        it.bukkitPlayer.sendActionBar(it.language.child("kitpvp").getCmp("msg.duel.queuing",
+                            game.kitData.challenged?.bukkitPlayer?.name ?: "",
+                            ".".repeat(i + 1), (game.players.size - 1).toString(), (game.size.maxPlayers - 1).toString()
+                        ))
+
                     else
                         it.bukkitPlayer.sendActionBar(it.language.child("kitpvp").getCmp("queue.msg.queuing",
                             ".".repeat(i + 1), (game.players.size - 1).toString(), (game.size.maxPlayers - 1).toString()

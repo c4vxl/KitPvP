@@ -2,6 +2,7 @@ package de.c4vxl.kitpvp
 
 import de.c4vxl.gamemanager.language.Language
 import de.c4vxl.gamemanager.utils.ResourceUtils
+import de.c4vxl.kitpvp.command.DuelCommand
 import de.c4vxl.kitpvp.data.Database
 import de.c4vxl.kitpvp.handlers.*
 import dev.jorel.commandapi.CommandAPI
@@ -59,6 +60,10 @@ class Main : JavaPlugin() {
         QueueHandler()
         GameHandler()
         KitRulesHandler()
+        DuelHandler()
+
+        // Register commands
+        DuelCommand
 
         logger.info("[+] $name has been enabled!")
     }

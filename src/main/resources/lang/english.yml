@@ -2,7 +2,10 @@
 
 
 "lobby.item.kit_editor.name": "<gold><b>Kit Editor</b></gold> <gray>| Right Click</gray>"
-"lobby.item.queue.name": "<gold><b>Queue Duel</b></gold> <gray>| Right click</gray>"
+"lobby.item.queue.name": "<gray>Right click: <gold>Queue a Game</gold> <white>|</white> Left click: <gold>Duel a player</gold></gray>"
+
+"lobby.duel.search_player.error.not_connected": "${prefix} <red>We couldn't find that player!</red> He might not be connected?"
+"lobby.duel.search_player.error.self": "${prefix} <red>You cannot duel yourself!</red>"
 
 "editor.title": "<red>Kit Editor</red>"
 "editor.page.main.title": "${editor.title} <gray>($0)</gray>"
@@ -213,6 +216,8 @@
 "ui.queue.item.size.lore.2": "<gray><white>Left click:</white> previous ($0)</gray>"
 "ui.queue.item.size.lore.3": "<gray><white>Right click:</white> next ($0)</gray>"
 
+"ui.player_search.title": "<red>Search for player</red>"
+"ui.player_search.item.confirm": "<green>Search</green>"
 
 "queue.item.layout_editor": "<gold>Edit kit layout (This round only)</gold>"
 "queue.msg.queuing": "<gray>Queuing for a game$0 (Found <white>$1/$2</white> players - Use <white>/quit</white> to leave)</gray>"
@@ -232,6 +237,26 @@
 "msg.end.2": "${prefix} <gray>Your team has won <b>$0/$1</b> rounds.</gray>"
 "msg.end.3.won": "${prefix} <gray>You have <green>won</green> the game!</gray>"
 "msg.end.3.lost": "${prefix} <gray>You have <red>lost</red> the game!</gray>"
+
+"msg.duel.ask.success": "${prefix} <gray>You have successfully challenged <white>$0</white> to a <gold>duel</gold></gray>"
+
+"msg.duel.request.1": "${prefix} ================ <gold>Duel request</gold> ================"
+"msg.duel.request.2": "${prefix} <gray><white>$0</white> has challenged you to a <gold>duel</gold>!</gray>"
+"msg.duel.request.3": "${prefix} <gray>Kit: <white>$0</white></gray>"
+"msg.duel.request.4": ""
+"msg.duel.clickable.accept": "<click:run_command:'/duel accept $0'><hover:show_text:'Click here to accept the request'>Accept</hover></click>"
+"msg.duel.clickable.decline": "<click:run_command:'/duel decline $0'><hover:show_text:'Click here to decline'>Decline</hover></click>"
+"msg.duel.request.5": "${prefix} <b><green>${msg.duel.clickable.accept}</green></b>  |  <b><red>${msg.duel.clickable.decline}</red></b>"
+"msg.duel.ask.error.self_already_playing": "${prefix} <red>You cannot duel someone whilst in a game!</red>"
+"msg.duel.ask.error.other_already_playing": "${prefix} <red>Sorry!</red> <gray>But <white>$0</white> is already in a game!</gray>"
+"msg.duel.declined": "${prefix} <red><white>$0</white> has declined the duel request!</red> <gray>Leaving duel...</gray>"
+
+"msg.duel.success.accept": "${prefix} <green>Successfully accepted the duel!</green>"
+"msg.duel.error.accept": "${prefix} <red>It looks like the duel request has run out!</red>"
+"msg.duel.success.decline": "${prefix} <green>Successfully declined the duel!</green>"
+"msg.duel.queuing": "<gray>Waiting for <white>$0</white> to join the duel$1 (Use <white>/quit</white> to leave)</gray>"
+
+"msg.duel.other_left": "${prefix} <gray>Your opponent has <red>left</red> the duel!</gray>"
 
 "title.game.start.title": "<gold>Game starting...</gold>"
 "title.game.start.subtitle": "<green>Good luck!</green>"
