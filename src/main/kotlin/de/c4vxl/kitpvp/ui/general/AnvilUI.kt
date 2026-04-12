@@ -44,6 +44,7 @@ open class AnvilUI(
                     .guiItem {
                         val view = it.view as? AnvilView
                         onInput(view?.renameText ?: "")
+                        returnTo?.open() ?: player.closeInventory()
                     }
                     .onDrop { it.itemDrop.remove() }
                     .build())
@@ -55,6 +56,6 @@ open class AnvilUI(
 
     override fun open() {
         baseView.open()
-        UIHandler.nonClosable[player.uniqueId] = returnTo ?: this
+        returnTo?.let { UIHandler.nonClosable[player.uniqueId] = it }
     }
 }
