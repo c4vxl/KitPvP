@@ -8,11 +8,11 @@ import de.c4vxl.kitpvp.Main
 import de.c4vxl.kitpvp.data.extensions.Extensions.data
 import de.c4vxl.kitpvp.data.extensions.Extensions.kitData
 import de.c4vxl.kitpvp.data.extensions.Extensions.lastKit
-import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.ComponentLike
+import net.kyori.adventure.title.TitlePart
 import org.bukkit.Bukkit
 import org.bukkit.GameMode
 import org.bukkit.GameRules
+import org.bukkit.Sound
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -90,6 +90,10 @@ class GameHandler : Listener {
                     .appendNewline()
                     .appendNewline().append(lang.getCmp("msg.start.7"))
             )
+
+            player.bukkitPlayer.sendTitlePart(TitlePart.TITLE, lang.getCmp("title.game.start.title"))
+            player.bukkitPlayer.sendTitlePart(TitlePart.SUBTITLE, lang.getCmp("title.game.start.subtitle"))
+            player.bukkitPlayer.playSound(player.bukkitPlayer.location, Sound.BLOCK_BEACON_POWER_SELECT, 5f, 1f)
         }
     }
 
@@ -139,6 +143,11 @@ class GameHandler : Listener {
      * @param game The game
      */
     private fun reset(game: Game) {
+        val kit = game.kitData.kit ?: return
+        val roundsTotal = kit.rules.numRounds
+        val roundsRemaining = game.kitData.roundsRemaining
+        val roundsPlayed = roundsTotal - roundsRemaining
+
         val map = game.worldManager.map ?: return
         game.playerManager.alivePlayers.forEach { player ->
             // Teleport to spawn
@@ -149,6 +158,14 @@ class GameHandler : Listener {
             // Equip players
             GamePlayerEquipEvent(player, game, GamePlayerEquipEvent.Reason.GAME_START)
                 .callEvent()
+
+            // Play sound
+            player.bukkitPlayer.playSound(player.bukkitPlayer.location, Sound.BLOCK_BEACON_POWER_SELECT, 5f, 1f)
+
+            // Send title
+            val lang = player.language.child("kitpvp")
+            player.bukkitPlayer.sendTitlePart(TitlePart.TITLE, lang.getCmp("title.round.start.title", roundsPlayed.toString(), roundsTotal.toString()))
+            player.bukkitPlayer.sendTitlePart(TitlePart.SUBTITLE, lang.getCmp("title.round.start.subtitle", roundsPlayed.toString(), roundsTotal.toString()))
         }
     }
 

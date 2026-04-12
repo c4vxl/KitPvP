@@ -229,3 +229,8 @@
 "msg.end.2": "${prefix} <gray>Your team has won <b>$0/$1</b> rounds.</gray>"
 "msg.end.3.won": "${prefix} <gray>You have <green>won</green> the game!</gray>"
 "msg.end.3.lost": "${prefix} <gray>You have <red>lost</red> the game!</gray>"
+
+"title.game.start.title": "<gold>Game starting...</gold>"
+"title.game.start.subtitle": "<green>Good luck!</green>"
+"title.round.start.title": ""
+"title.round.start.subtitle": "<gray>Round</gray> <white>$0/$1</white>"
