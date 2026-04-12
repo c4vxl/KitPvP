@@ -3,7 +3,7 @@
 
 "lobby.item.kit_editor.name": "<gold><b>Kit Editor</b></gold> <gray>| Right Click</gray>"
 "lobby.item.queue.name": "<gray>Right click: <gold>Queue a Game</gold> <white>|</white> Left click: <gold>Duel a player</gold></gray>"
-
+"lobby.item.requeue.name": "<gold>Queue with last kit again</gold> <gray>| Right click</gray>"
 "lobby.duel.search_player.error.not_connected": "${prefix} <red>We couldn't find that player!</red> He might not be connected?"
 "lobby.duel.search_player.error.self": "${prefix} <red>You cannot duel yourself!</red>"
 

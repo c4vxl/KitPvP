@@ -10,7 +10,9 @@ import de.c4vxl.gamemanager.language.Language.Companion.language
 import de.c4vxl.gamemanager.utils.ItemBuilder
 import de.c4vxl.kitpvp.Main
 import de.c4vxl.kitpvp.data.extensions.Extensions.kitData
+import de.c4vxl.kitpvp.data.extensions.Extensions.lastGameSize
 import de.c4vxl.kitpvp.data.extensions.Extensions.lastKit
+import de.c4vxl.kitpvp.queuing.Queuing
 import de.c4vxl.kitpvp.ui.general.PlayerSearchUI
 import de.c4vxl.kitpvp.ui.kit.KitUI
 import de.c4vxl.kitpvp.ui.queue.GameQueueUI
@@ -91,6 +93,19 @@ class LobbyHandler : Listener {
                     persistentDataContainer.set(NamespacedKey.minecraft("kitpvp_lobby_item"), PersistentDataType.STRING, "duel")
                 }
             })
+
+        // Last kit
+        event.player.lastKit?.let { lastKit ->
+            val lastSize = event.player.lastGameSize ?: return@let
+
+            inv.setItem(4, ItemBuilder(
+                Material.GREEN_SHULKER_BOX,
+                lang.getCmp("lobby.item.requeue.name"),
+            ).onRightClick {
+                val game = Queuing.getGame(lastSize, lastKit) ?: return@onRightClick
+                event.player.gma.join(game)
+            }.build())
+        }
     }
 
     private fun openDuelUI(player: Player, lang: Language) {
@@ -173,12 +188,14 @@ class LobbyHandler : Listener {
     @EventHandler
     fun onQuit(event: PlayerQuitEvent) {
         event.player.lastKit = null
+        event.player.lastGameSize = null
     }
 
     @EventHandler
     fun onGameStart(event: GameStartEvent) {
         event.game.players.forEach {
             it.bukkitPlayer.lastKit = event.game.kitData.kit
+            it.bukkitPlayer.lastGameSize = event.game.size
         }
     }
 }

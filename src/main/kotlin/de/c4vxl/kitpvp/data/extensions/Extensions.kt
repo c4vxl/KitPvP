@@ -2,6 +2,7 @@ package de.c4vxl.kitpvp.data.extensions
 
 import de.c4vxl.gamemanager.gma.game.Game
 import de.c4vxl.gamemanager.gma.game.type.GameID
+import de.c4vxl.gamemanager.gma.game.type.GameSize
 import de.c4vxl.kitpvp.data.struct.game.GameData
 import de.c4vxl.kitpvp.data.struct.kit.Kit
 import org.bukkit.entity.Player
@@ -13,6 +14,7 @@ import java.util.*
 object Extensions {
     val data = mutableMapOf<GameID, GameData>()
     private val lastKit = mutableMapOf<UUID, Kit>()
+    private val lastGameSize = mutableMapOf<UUID, GameSize>()
 
     /**
      * Returns game kit data
@@ -34,5 +36,15 @@ object Extensions {
         set(value) {
             value?.let { this@Extensions.lastKit[this.uniqueId] = it } ?:
             this@Extensions.lastKit.remove(this.uniqueId)
+        }
+
+    /**
+     * Holds the last game size of the last game a player has played
+     */
+    var Player.lastGameSize: GameSize?
+        get() = this@Extensions.lastGameSize[this.uniqueId]
+        set(value) {
+            value?.let { this@Extensions.lastGameSize[this.uniqueId] = it } ?:
+            this@Extensions.lastGameSize.remove(this.uniqueId)
         }
 }
