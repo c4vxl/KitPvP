@@ -203,7 +203,9 @@ class GameHandler : Listener {
 
         // Advance to next round
         game.kitData.roundsRemaining -= 1
-        reset(game)
+        Bukkit.getScheduler().callSyncMethod(Main.instance) {
+            reset(game)
+        }
 
         // Still rounds remaining
         if (game.kitData.roundsRemaining >= 1)
