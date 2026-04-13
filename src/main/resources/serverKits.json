@@ -12,7 +12,7 @@
       "leggings": {"material": "DIAMOND_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "boots": {"material": "DIAMOND_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "offhand": {"material": "GOLDEN_APPLE", "amount": 10, "unbreakable": false, "enchantments": {}, "effects": {}},
-      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isAllowBlockBreaking": true, "numRounds": 3, "health": 20.0, "activeEffects": {}}
+      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isAllowBlockBreaking": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isAllowMapBreaking": false}
     }
   },
   {
@@ -62,7 +62,7 @@
       "leggings": {"material": "NETHERITE_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_EXPLOSIONS": 3, "SWIFT_SNEAK": 1, "MENDING": 1, "DURABILITY": 3}, "effects": {}},
       "boots": {"material": "NETHERITE_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_ENVIRONMENTAL": 3, "MENDING": 3, "DURABILITY": 3}, "effects": {}},
       "offhand": {"material": "TOTEM_OF_UNDYING", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
-      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": false, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}}
+      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": false, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isAllowMapBreaking": true}
     }
   },
   {
@@ -81,7 +81,7 @@
       "leggings": {"material": "DIAMOND_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "boots": {"material": "DIAMOND_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "offhand": {"material": "SHIELD", "amount": 1, "unbreakable": false, "enchantments": {"DURABILITY": 3}, "effects": {}},
-      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}}
+      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isAllowMapBreaking": false}
     }
   },
   {
@@ -112,7 +112,7 @@
       "leggings": {"material": "DIAMOND_LEGGINGS","amount": 1,"unbreakable": false,"enchantments": {"PROTECTION_ENVIRONMENTAL": 2},"effects": {}},
       "boots": {"material": "DIAMOND_BOOTS","amount": 1,"unbreakable": false,"enchantments": {"PROTECTION_ENVIRONMENTAL": 2},"effects": {}},
       "offhand": {"material": "SHIELD","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
-      "rules": {"isAlwaysDay": true,"isKeepInventory": true,"isFallDamage": true,"isItemDrop": true,"isBlockDrops": true,"isEntityDrops": true,"isAllowBlockBreaking": true,"isAllowBlockPlacing": true,"isExplosionDamage": true,"isFriendlyFire": false,"isSelfDamage": true,"numRounds": 3,"health": 20.0,"activeEffects": {}}
+      "rules": {"isAlwaysDay": true,"isKeepInventory": true,"isFallDamage": true,"isItemDrop": true,"isBlockDrops": true,"isEntityDrops": true,"isAllowBlockBreaking": true,"isAllowBlockPlacing": true,"isExplosionDamage": true,"isFriendlyFire": false,"isSelfDamage": true,"numRounds": 3,"health": 20.0,"activeEffects": {}, "isAllowMapBreaking": false}
     }
   },
   {
@@ -127,7 +127,7 @@
       "chestplate": {"material": "DIAMOND_CHESTPLATE", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "leggings": {"material": "DIAMOND_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "boots": {"material": "DIAMOND_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
-      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isAllowBlockBreaking": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isOldPvP":  true}
+      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isAllowBlockBreaking": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isOldPvP":  true, "isAllowMapBreaking": false}
     }
   },
   {
@@ -176,7 +176,7 @@
       "chestplate": { "material": "DIAMOND_CHESTPLATE", "amount": 1, "unbreakable": true, "enchantments": {}, "effects": {}},
       "leggings": { "material": "DIAMOND_LEGGINGS", "amount": 1, "unbreakable": true, "enchantments": {}, "effects": {}},
       "boots": { "material": "DIAMOND_BOOTS", "amount": 1, "unbreakable": true, "enchantments": {}, "effects": {}},
-      "rules": { "isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "isResetMap": true, "isOldPvP": true, "isSoupPvP": true, "numRounds": 3, "health": 20.0, "activeEffects": {}}
+      "rules": { "isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "isResetMap": true, "isOldPvP": true, "isSoupPvP": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isAllowMapBreaking": false}
     }
   }
 ]

@@ -23,6 +23,7 @@ enum class KitGameRule(
     RESET_MAP(Material.TNT_MINECART, Boolean::class.java),
     OLD_PVP(Material.IRON_SWORD, Boolean::class.java),
     SOUP_PVP(Material.MUSHROOM_STEW, Boolean::class.java),
+    ALLOW_MAP_BREAKING(Material.IRON_PICKAXE, Boolean::class.java),
     NUM_ROUNDS(Material.COMPASS, Int::class.java),
     HEALTH(Material.GOLDEN_APPLE, Double::class.java),
     ACTIVE_EFFECTS(Material.BREWING_STAND, Potion::class.java)

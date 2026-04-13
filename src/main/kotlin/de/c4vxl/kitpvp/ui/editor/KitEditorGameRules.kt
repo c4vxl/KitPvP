@@ -150,13 +150,11 @@ class KitEditorGameRules(
 
             addItem(createGameRuleItem(KitGameRule.SOUP_PVP, editor.kit.rules.isSoupPvP) { editor.kit.rules.isSoupPvP = it })
 
-            addItem(createGameRuleItem(KitGameRule.NUM_ROUNDS, editor.kit.rules.numRounds) {
-                editor.kit.rules.numRounds = max(1, min(it, 10))
-            })
+            addItem(createGameRuleItem(KitGameRule.ALLOW_MAP_BREAKING, editor.kit.rules.isAllowMapBreaking) { editor.kit.rules.isAllowMapBreaking = it })
 
-            addItem(createGameRuleItem(KitGameRule.HEALTH, editor.kit.rules.health) {
-                editor.kit.rules.health = max(0.5, min(999.0, it))
-            })
+            addItem(createGameRuleItem(KitGameRule.NUM_ROUNDS, editor.kit.rules.numRounds) { editor.kit.rules.numRounds = max(1, min(it, 10)) })
+
+            addItem(createGameRuleItem(KitGameRule.HEALTH, editor.kit.rules.health) { editor.kit.rules.health = max(0.5, min(999.0, it)) })
 
             addItem(createGameRuleItem(KitGameRule.ACTIVE_EFFECTS, editor.kit.rules.activeEffects) {})
         }

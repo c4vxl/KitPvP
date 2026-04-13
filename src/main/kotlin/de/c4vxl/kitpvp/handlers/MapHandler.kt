@@ -51,9 +51,10 @@ class MapHandler : Listener {
     fun onBlockPlace(event: BlockPlaceEvent) {
         val game = event.player.gma.game ?: return
 
-        // Return if map reset isn't enabled
+        // Return if map reset isn't enabled and map breaking is allowed
         // Don't need to waste ram in that case
-        if (game.kitData.kit?.rules?.isResetMap != true)
+        val rules = game.kitData.kit?.rules ?: return
+        if (!rules.isResetMap && rules.isAllowMapBreaking)
             return
 
         val gameWorld = game.worldManager.map?.world ?: return
@@ -98,12 +99,19 @@ class MapHandler : Listener {
 
     @EventHandler
     fun onBlockDestroy(event: BlockBreakEvent) {
-        val game = event.block.location.world.game ?: return
+        val game = event.player.gma.game ?: return
 
-        // Return if map reset isn't enabled
+        // Return if map reset isn't enabled and map breaking is allowed
         // Don't need to waste ram in that case
-        if (game.kitData.kit?.rules?.isResetMap != true)
+        val rules = game.kitData.kit?.rules ?: return
+        if (!rules.isResetMap && rules.isAllowMapBreaking)
             return
+
+        // Handle map breaking
+        if (!rules.isAllowMapBreaking) {
+            event.isCancelled = true
+            return
+        }
 
         // Keep track of the change
         game.kitData.blocksChanged[event.block.location] = event.block.blockData.clone()
