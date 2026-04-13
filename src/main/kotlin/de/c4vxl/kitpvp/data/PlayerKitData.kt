@@ -11,12 +11,15 @@ import org.bukkit.entity.Player
  */
 object PlayerKitData {
     /**
+     * Returns the maximum amount of kits per player
+     */
+    val numKits get() = Main.config.getInt("config.kits.num-kits", 6)
+
+    /**
      * Returns all kits a player owns
      */
     fun getKits(player: OfflinePlayer, addExtra: Boolean) =
         buildList {
-            val numKits = Main.config.getInt("config.kits.num-kits", 6)
-
             // Add first n kits
             addAll(Database.get(player).kits.take(numKits))
 

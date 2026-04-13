@@ -279,3 +279,24 @@
 "title.game.start.subtitle": "<green>Good luck!</green>"
 "title.round.start.title": ""
 "title.round.start.subtitle": "<gray>Round</gray> <white>$0/$1</white>"
+
+
+"scoreboard.title": "${prefix}"
+
+"scoreboard.game.lobby.1": "<red>Kit:</red>"
+"scoreboard.game.lobby.2": "$0"
+"scoreboard.game.lobby.3": "<red>Amount of rounds:</red>"
+"scoreboard.game.lobby.4": "$0"
+
+"scoreboard.game.running.1": "<red>Kit:</red>"
+"scoreboard.game.running.2": "$0"
+"scoreboard.game.running.3": "<red>Round:</red>"
+"scoreboard.game.running.4": "<gray>$0/<white>$1</white></gray>"
+"scoreboard.game.running.5": "<red>Rounds won:</red>"
+"scoreboard.game.running.6": "<gray>$0</gray>"
+"scoreboard.game.running.7": "<red>Map:</red>"
+"scoreboard.game.running.8": "<gray>$0</gray>"
+
+"scoreboard.lobby.1": "<gray>Welcome back <white>$0</white></gray>"
+"scoreboard.lobby.2": "<red>Kits:</red>"
+"scoreboard.lobby.3": "<gray>$0/<white>$1</white></gray>"

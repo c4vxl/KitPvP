@@ -68,6 +68,7 @@ class Main : JavaPlugin() {
         DuelHandler()
         MapHandler()
         OldPvPHandler()
+        ScoreboardHandler()
 
         // Register commands
         DuelCommand
