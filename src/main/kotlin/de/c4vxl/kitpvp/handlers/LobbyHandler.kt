@@ -1,7 +1,9 @@
 package de.c4vxl.kitpvp.handlers
 
 import de.c4vxl.gamelobby.events.lobby.LobbyPlayerEquipEvent
+import de.c4vxl.gamelobby.lobby.Lobby
 import de.c4vxl.gamelobby.lobby.Lobby.isInLobby
+import de.c4vxl.gamelobby.utils.Item
 import de.c4vxl.gamemanager.gma.event.game.GameStartEvent
 import de.c4vxl.gamemanager.gma.event.player.GamePlayerJoinedEvent
 import de.c4vxl.gamemanager.gma.player.GMAPlayer.Companion.gma
@@ -47,11 +49,24 @@ class LobbyHandler : Listener {
         val inv = event.player.inventory
         val lang = event.player.language.child("kitpvp")
 
-        val visibilityItem = inv.getItem(4)
-
         inv.clear()
 
-        inv.setItem(2, visibilityItem)
+        // Player visibility item
+        val show = Lobby.showPlayers(event.player)
+        inv.setItem(2, ItemBuilder(
+            if (show) Material.LIME_DYE
+            else      Material.RED_DYE,
+            event.player.language.child("gamelobby").getCmp("lobby.item.hide.${if (show) "shown" else "hidden"}")
+        ).onRightClick {
+            if (event.player.hasCooldown(it.item!!.type))
+                return@onRightClick
+
+            Lobby.showPlayers(event.player, !show)
+
+            event.player.setCooldown(Material.RED_DYE, 1 * 20)
+            event.player.setCooldown(Material.LIME_DYE, 1 * 20)
+            LobbyPlayerEquipEvent(event.player).callEvent()
+        }.build())
 
         // Kit editor
         inv.setItem(7, ItemBuilder(
