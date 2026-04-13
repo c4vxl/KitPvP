@@ -9,6 +9,9 @@ object KitPreferenceUtils {
      * @param updatedInventory The updated inventory
      */
     fun calculateOffsets(originalInventory: Map<Int, KitItem>, updatedInventory: Map<Int, KitItem>): MutableMap<Int, Int> {
+        if (originalInventory == updatedInventory)
+            return mutableMapOf()
+        
         val offsets = mutableMapOf<Int, Int>()
 
         // Tracks what slots in the original inventory have already been mapped
