@@ -1,10 +1,12 @@
 package de.c4vxl.kitpvp.data.extensions
 
+import de.c4vxl.gamemanager.gma.GMA
 import de.c4vxl.gamemanager.gma.game.Game
 import de.c4vxl.gamemanager.gma.game.type.GameID
 import de.c4vxl.gamemanager.gma.game.type.GameSize
 import de.c4vxl.kitpvp.data.struct.game.GameData
 import de.c4vxl.kitpvp.data.struct.kit.Kit
+import org.bukkit.World
 import org.bukkit.entity.Player
 import java.util.*
 
@@ -47,4 +49,12 @@ object Extensions {
             value?.let { this@Extensions.lastGameSize[this.uniqueId] = it } ?:
             this@Extensions.lastGameSize.remove(this.uniqueId)
         }
+
+    /**
+     * Tries to find a game based on its game world
+     */
+    val World.game: Game? get() =
+        // We know that the game id is part of the map name
+        // The reason we need to use .contains is that the server might set a custom world prefix
+        GMA.registeredGames.find { this.name.contains(it.id.asString) }
 }

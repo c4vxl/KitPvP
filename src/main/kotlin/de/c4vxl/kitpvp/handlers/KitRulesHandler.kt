@@ -6,6 +6,7 @@ import de.c4vxl.gamemanager.gma.event.team.GamePlayerFriendlyFireEvent
 import de.c4vxl.gamemanager.gma.game.Game
 import de.c4vxl.gamemanager.gma.player.GMAPlayer.Companion.gma
 import de.c4vxl.kitpvp.Main
+import de.c4vxl.kitpvp.data.extensions.Extensions.game
 import de.c4vxl.kitpvp.data.extensions.Extensions.kitData
 import de.c4vxl.kitpvp.data.struct.kit.Kit
 import org.bukkit.Bukkit
@@ -25,15 +26,6 @@ class KitRulesHandler : Listener {
     init {
         Bukkit.getPluginManager().registerEvents(this, Main.instance)
     }
-
-    /**
-     * Tries to find a game based on its game world
-     * @param world The world
-     */
-    private fun getGame(world: World): Game? =
-        // We know that the game id is part of the map name
-        // The reason we need to use .contains is that the server might set a custom world prefix
-        GMA.registeredGames.find { world.name.contains(it.id.asString) }
 
     /**
      * Runs a passed function when a given game rule is enabled
@@ -72,14 +64,14 @@ class KitRulesHandler : Listener {
 
     @EventHandler
     fun onExplosion(event: EntityExplodeEvent) {
-        handle(getGame(event.entity.world), { !it.rules.isExplosionDamage }) { _, _ ->
+        handle(event.entity.world.game, { !it.rules.isExplosionDamage }) { _, _ ->
             event.blockList().clear()
         }
     }
 
     @EventHandler
     fun onExplosion(event: BlockExplodeEvent) {
-        handle(getGame(event.block.world), { !it.rules.isExplosionDamage }) { _, _ ->
+        handle(event.block.world.game, { !it.rules.isExplosionDamage }) { _, _ ->
             event.blockList().clear()
         }
     }
