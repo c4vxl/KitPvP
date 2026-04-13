@@ -1,6 +1,5 @@
 "prefix": "<gray>[</gray><red>KitPvP</red><gray>]</gray>"
 
-
 "lobby.item.kit_editor.name": "<gold><b>Kit Editor</b></gold> <gray>| Right Click</gray>"
 "lobby.item.queue.name": "<gray>Right click: <gold>Queue a Game</gold> <white>|</white> Left click: <gold>Duel a player</gold></gray>"
 "lobby.item.requeue.name": "<gold>Queue with last kit again</gold> <gray>| Right click</gray>"
@@ -16,14 +15,12 @@
 "editor.page.enchant.title": "${editor.title} <grey>| Enchant</grey>"
 "editor.page.edit.save": "<green>Save and go back</green>"
 "editor.page.enchant.reset": "<gold>Reset enchantments</gold>"
-"editor.page.rename.title": "${editor.title} <grey>| Name kit</grey>"
 "editor.page.type.title": "${editor.title} <grey>| Change type</grey>"
-"editor.page.rename.confirm": "<green>Rename</green>"
+"editor.page.type.back": "<red>Go back</red>"
 
 "editor.page.rules.title": "${editor.title} <grey>| Rules</grey>"
 "editor.page.rules.save": "<green>Save and go back</green>"
 "editor.page.rules.reset": "<red><b>Reset rules</b></red>"
-
 "rule.always_day.name.true": "<gold>Always day:</gold> <green>Yes</green>"
 "rule.always_day.name.false": "<gold>Always day:</gold> <red>No</red>"
 "rule.always_day.desc": "<gray>If enabled: time won't advance</gray>"
@@ -77,13 +74,10 @@
 "rule.active_effects.desc": "<gray>Select potion effects that players will start with</gray>"
 
 "rule.type.boolean.lore.1": "<gray><white>Click</white> to toggle</gray>"
-
 "rule.type.int.lore.1": "<gray><white>Left Click</white> to <b>add 1</b></gray>"
 "rule.type.int.lore.2": "<gray><white>Right Click</white> to <b>subtract 1</b></gray>"
 "rule.type.double.lore.1": "<gray><white>Left Click</white> to <b>add 0.5</b></gray>"
 "rule.type.double.lore.2": "<gray><white>Right Click</white> to <b>subtract 0.5</b></gray>"
-
-"editor.page.type.back": "<red>Go back</red>"
 
 "editor.page.enchant.item.lore.1": "<gold>Level:</gold> <gray>$0</gray>"
 "editor.page.enchant.item.lore.2": ""
@@ -114,6 +108,8 @@
 
 "editor.page.edit.effect.title": "${editor.page.edit.title} - Effects"
 
+"editor.page.rename.title": "${editor.title} <grey>| Name kit</grey>"
+"editor.page.rename.confirm": "<green>Rename</green>"
 "editor.page.edit.rename.title": "${editor.title} <grey>| Rename"
 "editor.page.edit.rename.confirm": "<green>Rename</green>"
 
@@ -242,10 +238,8 @@
 "queue.item.layout_editor": "<gold>Edit kit layout (This game only)</gold>"
 "queue.msg.queuing": "<gray>Queuing for a game$0 (Found <white>$1/$2</white> players - Use <white>/quit</white> to leave)</gray>"
 
-
 "msg.error.no_game_found": "${prefix} <red>It looks like there is no other player hosting a kit right now.</red> Try again later or host your own kit!"
 "msg.error.no_kit": "<red>Cannot join a game without a kit!</red>"
-
 "msg.start.1": "${prefix} <gold><b>Information about this game:</b></gold>"
 "msg.start.2": "${prefix} <gray>Kit Name:</gray> <white>$0</white>"
 "msg.start.3": "${prefix} <gray>Kit Creator:</gray> <white>$0</white>"
@@ -257,9 +251,7 @@
 "msg.end.2": "${prefix} <gray>Your team has won <b>$0/$1</b> rounds.</gray>"
 "msg.end.3.won": "${prefix} <gray>You have <green>won</green> the game!</gray>"
 "msg.end.3.lost": "${prefix} <gray>You have <red>lost</red> the game!</gray>"
-
 "msg.duel.ask.success": "${prefix} <gray>You have successfully challenged <white>$0</white> to a <gold>duel</gold></gray>"
-
 "msg.duel.request.1": "${prefix} ================ <gold>Duel request</gold> ================"
 "msg.duel.request.2": "${prefix} <gray><white>$0</white> has challenged you to a <gold>duel</gold>!</gray>"
 "msg.duel.request.3": "${prefix} <gray>Kit: <white>$0</white></gray>"
@@ -270,27 +262,21 @@
 "msg.duel.ask.error.self_already_playing": "${prefix} <red>You cannot duel someone whilst in a game!</red>"
 "msg.duel.ask.error.other_already_playing": "${prefix} <red>Sorry!</red> <gray>But <white>$0</white> is already in a game!</gray>"
 "msg.duel.declined": "${prefix} <red><white>$0</white> has declined the duel request!</red> <gray>Leaving duel...</gray>"
-
 "msg.duel.success.accept": "${prefix} <green>Successfully accepted the duel!</green>"
 "msg.duel.error.accept": "${prefix} <red>It looks like the duel request has run out!</red>"
 "msg.duel.success.decline": "${prefix} <green>Successfully declined the duel!</green>"
 "msg.duel.queuing": "<gray>Waiting for <white>$0</white> to join the duel$1 (Use <white>/quit</white> to leave)</gray>"
-
 "msg.duel.other_left": "${prefix} <gray>Your opponent has <red>left</red> the duel!</gray>"
-
 "title.game.start.title": "<gold>Game starting...</gold>"
 "title.game.start.subtitle": "<green>Good luck!</green>"
 "title.round.start.title": ""
 "title.round.start.subtitle": "<gray>Round</gray> <white>$0/$1</white>"
 
-
 "scoreboard.title": "${prefix}"
-
 "scoreboard.game.lobby.1": "<red>Kit:</red>"
 "scoreboard.game.lobby.2": "$0"
 "scoreboard.game.lobby.3": "<red>Amount of rounds:</red>"
 "scoreboard.game.lobby.4": "$0"
-
 "scoreboard.game.running.1": "<red>Kit:</red>"
 "scoreboard.game.running.2": "$0"
 "scoreboard.game.running.3": "<red>Round:</red>"
@@ -299,7 +285,6 @@
 "scoreboard.game.running.6": "<gray>$0</gray>"
 "scoreboard.game.running.7": "<red>Map:</red>"
 "scoreboard.game.running.8": "<gray>$0</gray>"
-
 "scoreboard.lobby.1": "<gray>Welcome back <white>$0</white></gray>"
 "scoreboard.lobby.2": "<red>Kits:</red>"
 "scoreboard.lobby.3": "<gray>$0/<white>$1</white></gray>"
