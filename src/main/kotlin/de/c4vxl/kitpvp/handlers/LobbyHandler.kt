@@ -47,7 +47,11 @@ class LobbyHandler : Listener {
         val inv = event.player.inventory
         val lang = event.player.language.child("kitpvp")
 
+        val visibilityItem = inv.getItem(4)
+
         inv.clear()
+
+        inv.setItem(2, visibilityItem)
 
         // Kit editor
         inv.setItem(7, ItemBuilder(
