@@ -14,6 +14,7 @@ import org.bukkit.*
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
+import kotlin.math.ceil
 
 class GameHandler : Listener {
     init {
@@ -207,19 +208,23 @@ class GameHandler : Listener {
             reset(game)
         }
 
-        // Still rounds remaining
-        if (game.kitData.roundsRemaining >= 1)
-            return
-
-        // No more rounds remaining
-        // End the game
-
         // Evaluate winning teams
         val roundsWon = game.kitData.roundsWon
             .mapNotNull { (game.teamManager.teams[it.key] ?: return@mapNotNull null) to it.value }
             .sortedByDescending { it.second }
 
         val highestNumWins = roundsWon.maxOfOrNull { it.second } ?: 0
+
+        // TODO: Implement actual logic for isDecided with more than two teams
+        val isDecided = if (game.size.teamAmount == 2) highestNumWins >= ceil((game.kitData.kit ?: return).rules.numRounds / 2.0) else false
+
+        // Still rounds remaining
+        if (game.kitData.roundsRemaining >= 1 && !isDecided)
+            return
+
+        // No more rounds remaining
+        // End the game
+
         val winnerTeams = roundsWon.filter { it.second == highestNumWins }.map { it.first }.toSet()
         val otherTeams = event.game.teamManager.teams.values.filterNot { it in winnerTeams }
 
