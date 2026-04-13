@@ -113,6 +113,9 @@ class ScoreboardHandler : Listener {
 
     @EventHandler
     fun onLobby(event: LobbyPlayerEquipEvent) {
+        if (event.player.gma.isInGame)
+            return
+
         val lang = event.player.language.child("kitpvp")
 
         Bukkit.getScheduler().callSyncMethod(Main.instance) {
