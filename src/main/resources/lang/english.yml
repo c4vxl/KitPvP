@@ -272,7 +272,7 @@
 "title.round.start.title": ""
 "title.round.start.subtitle": "<gray>Round</gray> <white>$0/$1</white>"
 
-"scoreboard.title": "${prefix}"
+"scoreboard.title": "        ${prefix}        "
 "scoreboard.game.lobby.1": "<red>Kit:</red>"
 "scoreboard.game.lobby.2": "$0"
 "scoreboard.game.lobby.3": "<red>Amount of rounds:</red>"
