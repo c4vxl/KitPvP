@@ -88,7 +88,9 @@ class OldPvPHandler : Listener {
         // Apply old knock-back
         damaged?.let {
             val direction = it.location.toVector().subtract(player.location.toVector()).normalize()
-            it.velocity = direction.multiply(0.4).setY(0.33)
+            try {
+                it.velocity = direction.multiply(0.4).setY(0.33)
+            } catch (_: Exception) {}
         }
 
         // Disable critical damage
