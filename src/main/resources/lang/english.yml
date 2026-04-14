@@ -236,8 +236,12 @@
 "ui.kits_list.item.head": "<gold>$0s kits</gold>"
 
 "queue.item.layout_editor": "<gold>Edit kit layout (This game only)</gold>"
+"queue.item.skip": "<green>Skip queue</green> <gray>| Right click</gray>"
 "queue.msg.queuing": "<gray>Queuing for a game$0 (Found <white>$1/$2</white> players - Use <white>/quit</white> to leave)</gray>"
 
+"msg.queue.skip.already": "${prefix} <red>You have already voted to skip this queue!</red>"
+"msg.queue.skip.success": "${prefix} <green>Voted to skip the queue.</green> <gray><white>$0</white> more vote(s) needed!</gray>"
+"msg.queue.skipped": "${prefix} <green>Skipping queue...</green>"
 "msg.error.no_game_found": "${prefix} <red>It looks like there is no other player hosting a kit right now.</red> Try again later or host your own kit!"
 "msg.error.no_kit": "<red>Cannot join a game without a kit!</red>"
 "msg.start.1": "${prefix} <gold><b>Information about this game:</b></gold>"

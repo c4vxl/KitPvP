@@ -55,6 +55,7 @@ class QueueHandler : Listener {
         val game = player.gma.game ?: return
 
         val kitChooserSlot = if (game.size.teamSize == 1) 4 else 5
+        val skipQueueSlot = if (kitChooserSlot == 5) 3 else 5
 
         player.inventory.setItem(kitChooserSlot, ItemBuilder(
             Material.BOOK,
@@ -67,6 +68,34 @@ class QueueHandler : Listener {
             .build()
             .enchantmentGlow()
         )
+
+        // Skip queue item
+        player.inventory.setItem(skipQueueSlot, ItemBuilder(
+            Material.LIME_TERRACOTTA,
+            lang.getCmp("queue.item.skip")
+        )
+            .onRightClick {
+                if (player.hasCooldown(it.item!!)) {
+                    player.sendMessage(lang.getCmp("msg.queue.skip.already"))
+                    return@onRightClick
+                }
+
+                game.kitData.queueSkipRequests += 1
+                player.setCooldown(it.item!!, 999999999)
+
+                // Send success message
+                val remaining = game.size.maxPlayers - game.kitData.queueSkipRequests
+                player.sendMessage(lang.getCmp("msg.queue.skip.success", remaining.toString()))
+                player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 5f, 1f)
+
+                // Start
+                if (remaining <= 0) {
+                    game.broadcastMessage("msg.queue.skipped", child = "kitpvp")
+                    game.start()
+                    game.players.forEach { p -> p.bukkitPlayer.setCooldown(it.item!!, 0) }
+                }
+            }
+            .build())
 
         player.playSound(player.location, Sound.BLOCK_BEACON_POWER_SELECT, 5f, 1f)
     }

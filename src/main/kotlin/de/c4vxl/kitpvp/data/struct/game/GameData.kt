@@ -19,7 +19,8 @@ data class GameData(
     val offsets: MutableMap<Player, Map<Int, Int>> = mutableMapOf(),
     var challenged: GMAPlayer? = null,
     var isTryOn: Boolean = false,
-    val blocksChanged: MutableMap<Location, BlockData> = mutableMapOf()
+    val blocksChanged: MutableMap<Location, BlockData> = mutableMapOf(),
+    var queueSkipRequests: Int = 0
 ) {
     val isDuel: Boolean get() =
         challenged != null
