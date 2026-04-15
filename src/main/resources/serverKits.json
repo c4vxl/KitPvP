@@ -12,7 +12,7 @@
       "leggings": {"material": "DIAMOND_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "boots": {"material": "DIAMOND_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "offhand": {"material": "GOLDEN_APPLE", "amount": 10, "unbreakable": false, "enchantments": {}, "effects": {}},
-      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isAllowBlockBreaking": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isAllowMapBreaking": false}
+      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isAllowBlockBreaking": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isAllowMapBreaking": false, "isDisableHunger": true}
     }
   },
   {
@@ -62,7 +62,7 @@
       "leggings": {"material": "NETHERITE_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_EXPLOSIONS": 3, "SWIFT_SNEAK": 1, "MENDING": 1, "DURABILITY": 3}, "effects": {}},
       "boots": {"material": "NETHERITE_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {"PROTECTION_ENVIRONMENTAL": 3, "MENDING": 3, "DURABILITY": 3}, "effects": {}},
       "offhand": {"material": "TOTEM_OF_UNDYING", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
-      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": false, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isAllowMapBreaking": true}
+      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": false, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isAllowMapBreaking": true, "isDisableHunger": true}
     }
   },
   {
@@ -81,7 +81,7 @@
       "leggings": {"material": "DIAMOND_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "boots": {"material": "DIAMOND_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "offhand": {"material": "SHIELD", "amount": 1, "unbreakable": false, "enchantments": {"DURABILITY": 3}, "effects": {}},
-      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isAllowMapBreaking": false}
+      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isBlockDrops": true, "isEntityDrops": true, "isAllowBlockBreaking": true, "isAllowBlockPlacing": true, "isExplosionDamage": true, "isFriendlyFire": false, "isSelfDamage": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isAllowMapBreaking": false, "isDisableHunger": true}
     }
   },
   {
@@ -94,9 +94,9 @@
         "5": {"material": "LAVA_BUCKET","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
         "2": {"material": "GOLDEN_APPLE","amount": 8,"unbreakable": false,"enchantments": {},"effects": {}},
         "3": {"material": "ENCHANTED_GOLDEN_APPLE","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
-        "4": {"material": "COBBLESTONE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
-        "1": {"material": "DIAMOND_PICKAXE","amount": 1,"unbreakable": false,"enchantments": {"DIG_SPEED": 5},"effects": {}},
-        "31": {"material": "COBBLESTONE","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "4": {"material": "OAK_PLANKS","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
+        "1": {"material": "DIAMOND_AXE","amount": 1,"unbreakable": false,"enchantments": {"DIG_SPEED": 5},"effects": {}},
+        "31": {"material": "OAK_PLANKS","amount": 64,"unbreakable": false,"enchantments": {},"effects": {}},
         "6": {"material": "BOW","amount": 1,"unbreakable": false,"enchantments": {"ARROW_KNOCKBACK": 1, "ARROW_DAMAGE": 1},"effects": {}},
         "17": {"material": "ARROW","amount": 15,"unbreakable": false,"enchantments": {},"effects": {}},
         "33": {"material": "CROSSBOW","amount": 1,"unbreakable": false,"enchantments": {  "PIERCING": 1},"effects": {}},
@@ -112,7 +112,7 @@
       "leggings": {"material": "DIAMOND_LEGGINGS","amount": 1,"unbreakable": false,"enchantments": {"PROTECTION_ENVIRONMENTAL": 2},"effects": {}},
       "boots": {"material": "DIAMOND_BOOTS","amount": 1,"unbreakable": false,"enchantments": {"PROTECTION_ENVIRONMENTAL": 2},"effects": {}},
       "offhand": {"material": "SHIELD","amount": 1,"unbreakable": false,"enchantments": {},"effects": {}},
-      "rules": {"isAlwaysDay": true,"isKeepInventory": true,"isFallDamage": true,"isItemDrop": true,"isBlockDrops": true,"isEntityDrops": true,"isAllowBlockBreaking": true,"isAllowBlockPlacing": true,"isExplosionDamage": true,"isFriendlyFire": false,"isSelfDamage": true,"numRounds": 3,"health": 20.0,"activeEffects": {}, "isAllowMapBreaking": false}
+      "rules": {"isAlwaysDay": true,"isKeepInventory": true,"isFallDamage": true,"isItemDrop": true,"isBlockDrops": true,"isEntityDrops": true,"isAllowBlockBreaking": true,"isAllowBlockPlacing": true,"isExplosionDamage": true,"isFriendlyFire": false,"isSelfDamage": true,"numRounds": 3,"health": 20.0,"activeEffects": {}, "isAllowMapBreaking": false, "isDisableHunger": true}
     }
   },
   {
@@ -127,7 +127,7 @@
       "chestplate": {"material": "DIAMOND_CHESTPLATE", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "leggings": {"material": "DIAMOND_LEGGINGS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
       "boots": {"material": "DIAMOND_BOOTS", "amount": 1, "unbreakable": false, "enchantments": {}, "effects": {}},
-      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isAllowBlockBreaking": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isOldPvP":  true, "isAllowMapBreaking": false}
+      "rules": {"isAlwaysDay": true, "isKeepInventory": true, "isFallDamage": true, "isItemDrop": true, "isAllowBlockBreaking": true, "numRounds": 3, "health": 20.0, "activeEffects": {}, "isOldPvP":  true, "isAllowMapBreaking": false, "isDisableHunger":  true}
     }
   },
   {
