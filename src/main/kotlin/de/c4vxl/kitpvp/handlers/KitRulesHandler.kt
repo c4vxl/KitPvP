@@ -17,6 +17,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockExplodeEvent
 import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.entity.EntityExplodeEvent
+import org.bukkit.event.entity.FoodLevelChangeEvent
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.PlayerDropItemEvent
@@ -79,6 +80,15 @@ class KitRulesHandler : Listener {
     fun onExplosion(event: BlockExplodeEvent) {
         handle(event.block.world.game, { !it.rules.isExplosionDamage }) { _, _ ->
             event.blockList().clear()
+        }
+    }
+
+    @EventHandler
+    fun onHunger(event: FoodLevelChangeEvent) {
+        // If there happens to be a vanilla gamerule for this
+        // consider moving this to GameHandler.onWorldLoaded
+        handle((event.entity as? Player)?.gma?.game, { it.rules.isDisableHunger }) { _, _ ->
+            event.isCancelled = true
         }
     }
 

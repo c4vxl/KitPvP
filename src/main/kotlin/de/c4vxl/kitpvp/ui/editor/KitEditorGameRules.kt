@@ -154,6 +154,8 @@ class KitEditorGameRules(
 
             addItem(createGameRuleItem(KitGameRule.DISABLE_OFFHAND, editor.kit.rules.isDisableOffhand) { editor.kit.rules.isDisableOffhand = it })
 
+            addItem(createGameRuleItem(KitGameRule.DISABLE_HUNGER, editor.kit.rules.isDisableHunger) { editor.kit.rules.isDisableHunger = it })
+
             addItem(createGameRuleItem(KitGameRule.NUM_ROUNDS, editor.kit.rules.numRounds) { editor.kit.rules.numRounds = max(1, min(it, 10)) })
 
             addItem(createGameRuleItem(KitGameRule.HEALTH, editor.kit.rules.health) { editor.kit.rules.health = max(0.5, min(999.0, it)) })
