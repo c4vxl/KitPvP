@@ -284,6 +284,7 @@
 "msg.duel.error.accept": "${prefix} <red>It looks like the duel request has run out!</red>"
 "msg.duel.success.decline": "${prefix} <green>Successfully declined the duel!</green>"
 "msg.duel.queuing": "<gray>Waiting for <white>$0</white> to join the duel$1 (Use <white>/quit</white> to leave)</gray>"
+"msg.duel.queuing_joined": "<gray>Waiting for the game to start$0</gray>"
 "msg.duel.other_left": "${prefix} <gray>Your opponent has <red>left</red> the duel!</gray>"
 "title.game.start.title": "<gold>Game starting...</gold>"
 "title.game.start.subtitle": "<green>Good luck!</green>"

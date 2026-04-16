@@ -28,17 +28,20 @@ class QueueHandler : Listener {
                     return@forEach
 
                 game.players.forEach {
-                    if (game.kitData.isTryOn)
-                        it.bukkitPlayer.sendActionBar(it.language.child("kitpvp").getCmp("tryon.title.exit_notice"))
+                    val language = it.language.child("kitpvp")
 
-                    else if (game.kitData.isDuel)
-                        it.bukkitPlayer.sendActionBar(it.language.child("kitpvp").getCmp("msg.duel.queuing",
-                            game.kitData.challenged?.bukkitPlayer?.name ?: "",
-                            ".".repeat(i + 1), (game.players.size - 1).toString(), (game.size.maxPlayers - 1).toString()
-                        ))
+                    if (game.kitData.isTryOn)
+                        it.bukkitPlayer.sendActionBar(language.getCmp("tryon.title.exit_notice"))
+
+                    else if (game.kitData.isDuel) {
+                        if (game.isFull)
+                            it.bukkitPlayer.sendActionBar(language.getCmp("msg.duel.queuing_joined", ".".repeat(i + 1)))
+                        else
+                            it.bukkitPlayer.sendActionBar(language.getCmp("msg.duel.queuing", game.kitData.challenged?.bukkitPlayer?.name ?: "", ".".repeat(i + 1), (game.players.size - 1).toString(), (game.size.maxPlayers - 1).toString()))
+                    }
 
                     else
-                        it.bukkitPlayer.sendActionBar(it.language.child("kitpvp").getCmp("queue.msg.queuing",
+                        it.bukkitPlayer.sendActionBar(language.getCmp("queue.msg.queuing",
                             ".".repeat(i + 1), (game.players.size - 1).toString(), (game.size.maxPlayers - 1).toString()
                         ))
                 }
