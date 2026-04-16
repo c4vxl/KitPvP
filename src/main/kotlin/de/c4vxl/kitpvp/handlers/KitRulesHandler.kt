@@ -112,6 +112,10 @@ class KitRulesHandler : Listener {
         if (item.type != Material.MUSHROOM_STEW)
             return
 
+        // Only on right clicks
+        if (!event.action.isRightClick)
+            return
+
         handle(event.player.gma.game, { it.rules.isSoupPvP }, { _, _ ->
             // Heal player
             event.player.health = min(
